@@ -39,6 +39,12 @@
     </div>
 </div>
 
+<div class="container">
+    <hr style="background:black;">
+    <footer class="text-right">
+        <p>&copy; 2020 QuoRating, Inc.</p>
+    </footer>
+</div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="js/bootstrap.bundle.min.js"></script>
