@@ -5,11 +5,19 @@
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<?php
+		include_once 'utils/bootstrap.php'; 
+		include_once 'utils/bootstrap_scripts.php';
+	?>
+		<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
     <link rel="stylesheet" type="text/css" href="css/signup.css">
 <body>
+
+	<?php
+		include_once 'utils/navbar.php';
+	?>
+
 	<div class="signup-form">
 		<form action="" method="post">
 			<div class="form-header">
@@ -38,8 +46,7 @@
 			</select>
 			</div>
 			<div class="form-group">
-				<label class="checkbox-inline"><input type="checkbox" required>I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
-				
+				<label class="checkbox-inline "><input type="checkbox" class="align-text-top" required> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
 			</div>
 			<div class="form-group">
 				<button type="submit" class="btn btn-primary btn-block btn-lg" name="sign_up">Sign up</button>
@@ -48,5 +55,6 @@
 		</form>
 		<div class="text-center small" style="color:#674288">Already have an account?<a href="signin.php"> Sign in here</a></div>
 	</div>
+
 </body>
 </html>
