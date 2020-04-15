@@ -17,7 +17,7 @@
 ?>
 
 <div class="signin-form">
-    <form action="" method="post">
+    <form action="signin_user_db.php" method="post">
 		<div class="form-header">
 			<h2>Sign In</h2>
 			<p>Login to QuoRate</p>
@@ -34,7 +34,6 @@
 		<div class="form-group">
 			<button type="submit" class="btn btn-primary btn-block btn-lg" name="sign_in">Sign in</button>
 		</div>
-		<!--<?php include("signin_user.php"); ?>-->	
     </form>
 	<div class="text-center small" style='color:#67428B;'>Don't have an account? <a href="signup.php">Create one</a></div>
 </div>

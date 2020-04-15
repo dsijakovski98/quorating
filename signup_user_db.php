@@ -27,11 +27,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
       $pass = password_hash($user_pass, PASSWORD_DEFAULT);
 
       $sql = "INSERT INTO users (user_name, user_pass, user_email, user_gender)
-              VALUES (:user_name, :user_pass, :user_email,:user_gender)";
+              VALUES (?, ?, ?, ?)";
 
       $stmt = $pdo->prepare($sql);
       
-      $stmt->execute(['user_name' => $user_name, 'user_pass' => $pass, 'user_email' => $user_email,'user_gender'=>$user_gender]);
+      $stmt->execute([$user_name, $pass, $user_email,$user_gender]);
 
       if($sql)
 	    {

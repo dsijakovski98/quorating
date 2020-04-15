@@ -1,8 +1,9 @@
-* Learn about sessions in  projects []
 
+* Add error handlers in sign in page []
+* Add error handlers in sign up page []
 * Connect links:
 	- About page []
 	- Categories pages []
-	- Login/Register page []
-
+	- Login/Register page [x]
 * Add a covid-19 info panel
+* Learn about sessions in  projects []
