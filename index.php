@@ -15,7 +15,6 @@
     include_once 'utils/navbar.php';    
 ?>
 
-
 <!-- LAYOUT -->
 <div class="container">
     <div class="row">
@@ -23,12 +22,19 @@
             <h3 class="text-center">Rate your favorite movies from home</h3>
         </div>
     </div>
+    <br>
     <div class="row">
-        <div class="col-md-3 sidebar bg-dark text-center">
-            <p class="text-light">Sidebar Links</p>
+        <div class="col-md-4 Dcontent bg-dark text-center">
+            <a class="text-light" href="#"><h2>Movies</h2></a>
+            <img src="https://picsum.photos/300" alt="">
         </div>
-        <div class="col-md-9 content bg-light">
-            <p>Main Content</p>
+        <div class="col-md-4 Dcontent bg-light text-center">
+        <a class="text-dark" href="#"><h2>Books</h2></a>
+            <img src="https://picsum.photos/300" alt="">
+        </div>
+        <div class="col-md-4 Dcontent bg-dark text-center">
+        <a class="text-light" href="#"><h2>Games</h2></a>
+            <img src="https://picsum.photos/300" alt="">
         </div>
     </div>
 </div>
