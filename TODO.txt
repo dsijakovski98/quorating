@@ -1,0 +1,8 @@
+* Learn about sessions in  projects []
+
+* Connect links:
+	- About page []
+	- Categories pages []
+	- Login/Register page []
+
+* Add a covid-19 info panel
