@@ -25,17 +25,20 @@
     </div>
     <br>
     <div class="row">
-        <div class="col-md-4 Dcontent bg-dark text-center">
+        <div class="col-md-4 col-sm-12 Dcontent bg-dark text-center">
             <a class="text-light" href="#"><h2>Movies</h2></a>
-            <img src="https://picsum.photos/300" alt="">
+            <br>
+            <img class="img-fluid thumbnail" src="images/popcorn.jpg" alt="">
         </div>
-        <div class="col-md-4 Dcontent bg-light text-center">
+        <div class="col-md-4 col-sm-12 Dcontent bg-light text-center">
         <a class="text-dark" href="#"><h2>Books</h2></a>
-            <img src="https://picsum.photos/300" alt="">
+        <br>
+            <img class="img-fluid thumbnail" src="images/books.jpg" alt="">
         </div>
-        <div class="col-md-4 Dcontent bg-dark text-center">
+        <div class="col-md-4 col-sm-12 Dcontent bg-dark text-center">
         <a class="text-light" href="#"><h2>Games</h2></a>
-            <img src="https://picsum.photos/300" alt="">
+        <br>
+            <img class="img-fluid thumbnail" src="images/video-games.jpg" alt="">
         </div>
     </div>
 </div>
@@ -43,7 +46,7 @@
 <div class="container">
     <hr style="background:black;">
     <footer class="text-right">
-        <p>&copy; 2020 QuoRating, Inc.</p>
+       <?php echo "<p>&copy;". date("Y") ."  QuoRating, Inc.</p>"; ?>
     </footer>
 </div>
 
