@@ -1,7 +1,7 @@
 <?php 
 session_start();
 
-include("../model/connection.php"); 
+require_once '../model/userqueries.php'; 
 
 	if(isset($_POST['sign_in'])){
 		$uid = htmlentities($_POST['email']);
@@ -9,13 +9,16 @@ include("../model/connection.php");
 
 
 		// Get the user from the 'users' table VIA email
-		$select_user = "SELECT * FROM users WHERE user_email = ? OR user_name = ?";
-		$statement = $pdo->prepare($select_user);
-		$statement->execute([$uid, $uid]);
+		$userQ = new UserQueries();
+		
+		$sql = "SELECT * FROM users WHERE user_email = ? OR user_name = ?";
+		$params = array($uid, $uid);
 
-		$check_user = $statement->rowCount();
-		$result = $statement->fetch();
-		$user_password = $result['user_pass'];
+		$result = $userQ->query($sql, $params);
+		
+		$check_user = $result->rowCount();
+		$row = $result->fetch();
+		$user_password = $row['user_pass'];
 		// Check if password is correct
 		$pwd = password_verify($pass, $user_password);
 

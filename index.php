@@ -13,7 +13,7 @@
 
 <body>
 <?php
-    include_once 'utils/navbar.php';    
+    include_once 'utils/navbar.php';
 ?>
 
 <!-- LAYOUT -->
