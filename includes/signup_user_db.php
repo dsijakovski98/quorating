@@ -1,5 +1,5 @@
 <?php 
-require_once '../model/userqueries.php';
+require_once '../model/queries.php';
 // include_once ("../utils/validate.php");
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -11,29 +11,45 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
   // Epmty fields [x]
 
   // Password length >= 8
-  if (strlen($user_pass) < 8) 
-  {
+  if (strlen($user_pass) < 8) {
     header("Location: ../signup.php?error=pwd");
     exit();
-  } // E-mail validation
-  else if(!filter_var($user_email, FILTER_VALIDATE_EMAIL)){
-    header("Location: ../signin.php?error=email");
+  }
+  // E-mail validation
+  else if(!filter_var($user_email, FILTER_VALIDATE_EMAIL)) {
+    header("Location: ../signup.php?error=email");
+    exit();
   }
   else {
-    // Check for unique username
+    $q = new Queries();
 
+    // Check for unique username
+    $sql = "SELECT * FROM users WHERE user_name = ?";
+    $params = array($user_name);
+    $result = $q->query($sql, $params);
+    if($result->rowCount() > 0) {
+      header("Location: ../signup.php?error=uniqUser");
+      exit();
+    }
 
     // Check for unique email
+    $sql = "SELECT * FROM users WHERE user_email = ?";
+    $params = array($user_email);
+    $result = $q->query($sql, $params);
+    if($result->rowCount() > 0) {
+      header("Location: ../signup.php?error=uniqMail");
+      exit();
+    }
 
+    // Successfull registration
 
     // Hash password
     $hashedPwd = password_hash($user_pass, PASSWORD_DEFAULT);
 
-    $userQ = new UserQueries();
     
     $sql = "INSERT INTO users (user_name, user_pass, user_email, user_gender) VALUES (?, ?, ?, ?)";
     $params = array($user_name, $hashedPwd, $user_email, $user_gender);
-    $result = $userQ->query($sql, $params);
+    $result = $q->query($sql, $params);
 
     if($result)
     {

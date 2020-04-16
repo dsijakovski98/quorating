@@ -58,6 +58,7 @@
 
 
 <?php
+	require 'utils/footer.php';
 	include_once 'utils/bootstrap_scripts.php';
 ?>
 </body>

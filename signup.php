@@ -22,6 +22,31 @@
 				<h2>Sign Up</h2>
 				<p>Fill out this form and start rating your favourite movies, books & games!</p>
 			</div>
+
+			<!-- PHP: ERROR MESSAGES FOR INVALID SIGN UP -->
+			<?php
+				if(isset($_GET['error'])){
+					$errorMessage = "";
+					$error = $_GET['error'];
+
+					switch($error){
+						case 'pwd':
+							$errorMessage .= "Password must be at least 8 characters!";
+							break;
+						case 'email':
+							$errorMessage .= "Invalid e-mail address!";
+							break;
+						case 'uniqUser':
+							$errorMessage .= "Username already exists!";
+							break;
+						case 'uniqMail':
+							$errorMessage .= "E-mail address is already registered!";
+							break;
+					}
+					echo '<p class="text-danger text-center" style="margin:0;">'. $errorMessage .'</p>';
+				}
+			?>
+
 			<div class="form-group">
 			<label>Username</label>
 			<input type="text" class="form-control" name="user_name" placeholder="someone123" autocomplete="off" required>
@@ -53,5 +78,8 @@
 		<div class="text-center small" style="color:#674288">Already have an account?<a href="signin.php"> Sign in here</a></div>
 	</div>
 
+	<?php
+		require 'utils/footer.php';
+	?>
 </body>
 </html>

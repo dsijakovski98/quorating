@@ -26,31 +26,27 @@
     <br>
     <div class="row">
         <div class="col-md-4 col-sm-12 Dcontent bg-dark text-center">
-            <a class="text-light" href="#"><h2>Movies</h2></a>
+            <a class="text-light" href="control/movies-control.php"><h2>Movies</h2></a>
             <br>
             <img class="img-fluid thumbnail" src="images/popcorn.jpg" alt="">
         </div>
         <div class="col-md-4 col-sm-12 Dcontent bg-light text-center">
-        <a class="text-dark" href="#"><h2>Books</h2></a>
+        <a class="text-dark" href="control/books-control.php"><h2>Books</h2></a>
         <br>
             <img class="img-fluid thumbnail" src="images/books.jpg" alt="">
         </div>
         <div class="col-md-4 col-sm-12 Dcontent bg-dark text-center">
-        <a class="text-light" href="#"><h2>Games</h2></a>
+        <a class="text-light" href="control/games-control.php"><h2>Games</h2></a>
         <br>
             <img class="img-fluid thumbnail" src="images/video-games.jpg" alt="">
         </div>
     </div>
 </div>
 
-<div class="container">
-    <hr style="background:black;">
-    <footer class="text-right">
-       <?php echo "<p>&copy;". date("Y") ."  QuoRating, Inc.</p>"; ?>
-    </footer>
-</div>
+
 
 <?php
+    require 'utils/footer.php';
     include_once 'utils/bootstrap_scripts.php';
 ?>
 </body>

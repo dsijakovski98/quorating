@@ -1,7 +1,7 @@
 <?php
 require_once 'connection.php'; 
 
-class UserQueries extends Connection{
+class Queries extends Connection{
 
     public function query($sql, $params) {
         $pdo = $this->connect();

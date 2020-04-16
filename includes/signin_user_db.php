@@ -1,7 +1,7 @@
 <?php 
 session_start();
 
-require_once '../model/userqueries.php'; 
+require_once '../model/queries.php'; 
 
 	if(isset($_POST['sign_in'])){
 		$uid = htmlentities($_POST['email']);
@@ -9,12 +9,12 @@ require_once '../model/userqueries.php';
 
 
 		// Get the user from the 'users' table VIA email
-		$userQ = new UserQueries();
+		$q = new Queries();
 		
 		$sql = "SELECT * FROM users WHERE user_email = ? OR user_name = ?";
 		$params = array($uid, $uid);
 
-		$result = $userQ->query($sql, $params);
+		$result = $q->query($sql, $params);
 		
 		$check_user = $result->rowCount();
 		$row = $result->fetch();

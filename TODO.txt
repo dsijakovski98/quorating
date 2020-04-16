@@ -5,21 +5,21 @@
 * Validate input in sign in page [x]
 * Error messages for error handlers in sign in page [x]
 
-* Validate input in sign up page []
-* Add error handlers in sign up page []
-* Error messages for error handlers in sign up page []
+* Validate input in sign up page [x]
+* Add error handlers in sign up page [x]
+* Error messages for error handlers in sign up page [x]
 
 * Replace values with placeholders:
-	- Sign in page []
-	- Sign up page []
+	- Sign in page [x]
+	- Sign up page [x]
 * Reformat code:
-	- index.php []
-	- signin_user_db.php []
-	- signup_user_db.php []
-* OOP-ify the Database []
+	- index.php [x]
+	- signin_user_db.php [x]
+	- signup_user_db.php [x]
+* OOP-ify the Database [x]
 * Edit the front page:
-	- logo on left side []
-	- login/register button on right side []
+	- logo on left side [x]
+	- login/register button on right side [x]
 
 
 
