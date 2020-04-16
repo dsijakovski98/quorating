@@ -17,7 +17,7 @@
 	?>
 
 	<div class="signup-form">
-		<form action="" method="post">
+		<form action="includes/signup_user_db.php" method="post">
 			<div class="form-header">
 				<h2>Sign Up</h2>
 				<p>Fill out this form and start rating your favourite movies, books & games!</p>
@@ -43,13 +43,12 @@
 				<option>Other</option>
 			</select>
 			</div>
-			<div class="form-group">
+			<!-- <div class="form-group">
 				<label class="checkbox-inline "><input type="checkbox" class="align-text-top" required> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
-			</div>
+			</div> -->
 			<div class="form-group">
 				<button type="submit" class="btn btn-primary btn-block btn-lg" name="sign_up">Sign up</button>
 			</div>
-			<?php include("signup_user_db.php"); ?>
 		</form>
 		<div class="text-center small" style="color:#674288">Already have an account?<a href="signin.php"> Sign in here</a></div>
 	</div>
