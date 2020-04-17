@@ -22,8 +22,10 @@ require_once '../model/queries.php';
 		// Check if password is correct
 		$pwd = password_verify($pass, $user_password);
 
+
+		// SUCCESSFULL SIGN IN
 		if($check_user == 1 && $pwd == 1) {
-			// $_SESSION['user_email'] = $email;
+			$_SESSION['user_name'] = $row['user_name'];
 			header("Location: ../index.php");
 		}
 		else if($check_user == 1) { // Password incorrect

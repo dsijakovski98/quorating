@@ -47,7 +47,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $hashedPwd = password_hash($user_pass, PASSWORD_DEFAULT);
 
     
-    $sql = "INSERT INTO users (user_name, user_pass, user_email, user_gender) VALUES (?, ?, ?, ?)";
+    $sql = "INSERT INTO users (user_name, user_pass, user_email, user_gender, admin) VALUES (?, ?, ?, ?, FALSE)";
     $params = array($user_name, $hashedPwd, $user_email, $user_gender);
     $result = $q->query($sql, $params);
 

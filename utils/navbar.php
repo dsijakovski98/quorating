@@ -1,3 +1,6 @@
+<?php 
+    session_start();
+?>
   <!-- NAVBAR -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
@@ -26,14 +29,30 @@
         <a class="nav-link" href="#">About Us</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="views/contact.php">Contact Us</a>
+        <a class="nav-link" href="contact.php">Contact Us</a>
       </li>
     </ul>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" href="signin.php">Login/Register</a>
+          <a class="nav-link" href="signin.php" id="login_reg">Login/Register</a>
        </li>
        <li class="nav-item">
+          <?php 
+            if(isset($_SESSION['user_name'])){
+
+              echo '<script>document.getElementById("login_reg").style.display = "none";</script>';
+              echo '<li class="nav-item">';
+              echo '<a class="nav-link" href="#">Welcome, '. $_SESSION['user_name'] .'</a>';
+              echo '</li>';
+
+              echo '<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="views/edit_profile.php">Edit Profile</a>
+              <a class="dropdown-item" href="includes/logout.php">Logout</a>
+            </div>';
+            }
+          ?>
           <a class="nav-link" href="signin.php" style="display:none;">username</a>
        </li>
       </ul>
