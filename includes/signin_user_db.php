@@ -26,6 +26,15 @@ require_once '../model/queries.php';
 		// SUCCESSFULL SIGN IN
 		if($check_user == 1 && $pwd == 1) {
 			$_SESSION['user_name'] = $row['user_name'];
+
+			$sql = "SELECT hasPicture, extension FROM images WHERE id = ?";
+			$params = array($row['id']);
+			$result = $q->query($sql, $params);
+			$data = $result->fetch();
+
+			if($data['hasPicture'] == 1){
+				$_SESSION['ext'] = $data['extension'];
+			}
 			header("Location: ../index.php");
 		}
 		else if($check_user == 1) { // Password incorrect

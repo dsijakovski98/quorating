@@ -38,11 +38,23 @@
        </li>
        <li class="nav-item">
           <?php 
-            if(isset($_SESSION['user_name'])){
+            if(isset($_SESSION['user_name'])) {
 
               echo '<script>document.getElementById("login_reg").style.display = "none";</script>';
-              echo '<li class="nav-item">';
-              echo '<a class="nav-link" href="#">Welcome, '. $_SESSION['user_name'] .'</a>';
+              
+              $fileExt = "";
+              $picName = "default";
+              if(isset($_SESSION['ext']) ) {
+                // This means that the user uploaded a his/her profile picture
+                $fileExt = $_SESSION['ext'];
+                $picName = $_SESSION['user_name'];
+              }
+              else {
+                $fileExt = "jpg";
+              }
+              echo '<img class="rounded" src="images/profilePics/' . $picName . "." . $fileExt . '" width="50">';
+              echo '<li class="nav-item" style="margin-bottom:0;">';
+              echo '<a class="nav-link"  href="#">Welcome, '. $_SESSION['user_name'] .'</a>';
               echo '</li>';
 
               echo '<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -1,17 +1,11 @@
 <?php
-require_once '../model/queries.php';
 
-session_start();
+require_once '../model/get_user.php';
 
-if(isset($_SESSION['user_name'])){   
-    $q = new Queries();
 
-    $user = $_SESSION['user_name'];
-    $sql = "SELECT * FROM users WHERE user_name = ?";
-    $params = array($user);
-    $result = $q->query($sql, $params);
-    $user_info = $result->fetch();
-
+if(isset($uname)){   
+    
+    require_once 'upload-control.php';
     $user_name = $user_info['user_name'];
     $user_email = $user_info['user_email'];
     $user_gender = $user_info['user_gender'];
@@ -53,6 +47,8 @@ if(isset($_SESSION['user_name'])){
     $result = $q->query($sql, $params);
 
     $_SESSION['user_name'] = $updated_uname;
+
+
     
     echo "
         <script>alert('You have successfully updated your profile information!')</script>
@@ -61,3 +57,5 @@ if(isset($_SESSION['user_name'])){
 
 
 }
+
+

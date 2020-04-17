@@ -1,15 +1,7 @@
 <!DOCTYPE html>
 <?php
-    require_once("../model/queries.php");
-
-    session_start();
-    $uname = $_SESSION['user_name'];
-    $q = new Queries();
-    $sql = "SELECT * FROM users WHERE user_name = ?";
-    $params = array($uname);
-    $user = $q->query($sql, $params);
-    $user_info = $user->fetch();
-
+    require_once("../model/get_user.php");
+   
     if(!isset($uname)){
         header("Location: ../signin.php");
     }
@@ -49,7 +41,15 @@
               </td>
             </tr>
             
-            <tr><td></td><td><a class="btn btn-default" style="text-decoration: none;font-size: 15px;" href="#"><i class="fa fa-user" aria-hidden="true"></i> Change Your Profile Picture</a></td></tr>
+            <tr>
+              <td>
+                <b>Change Profile Picture</b>
+              </td>
+              <td>
+                <i class="fa fa-user" style="margin-right:5px;" aria-hidden="true"></i> 
+                <input type="file" name="profilePic" value="Upload Picture">
+              </td>
+            </tr>
 
             <tr>
               <td style="font-weight: bold;">Change Your Email</td>
