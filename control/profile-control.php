@@ -52,6 +52,8 @@ if(isset($_SESSION['user_name'])){
     $params = array($updated_uname, $updated_email, $updated_gender, $user_id);
     $result = $q->query($sql, $params);
 
+    $_SESSION['user_name'] = $updated_uname;
+    
     echo "
         <script>alert('You have successfully updated your profile information!')</script>
         <script>window.open('../index.php','_self')</script>
