@@ -11,4 +11,3 @@
 
     $data = $result->fetchAll();
 
-    var_dump($data);
