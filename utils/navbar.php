@@ -36,10 +36,10 @@
         <li class="nav-item">
           <a class="nav-link" href="signin.php" id="login_reg">Login/Register</a>
        </li>
-       <li class="nav-item">
           <?php 
+              // <li class="nav-item">
             if(isset($_SESSION['user_name'])) {
-
+              
               echo '<script>document.getElementById("login_reg").style.display = "none";</script>';
               
               $fileExt = "";
@@ -52,12 +52,12 @@
               else {
                 $fileExt = "jpg";
               }
-              echo '<img class="rounded" src="images/profilePics/' . $picName . "." . $fileExt . '" width="50">';
-              echo '<li class="nav-item" style="margin-bottom:0;">';
-              echo '<a class="nav-link"  href="#">Welcome, '. $_SESSION['user_name'] .'</a>';
+              echo '<img class="rounded-circle" src="images/profilePics/' . $picName . "." . $fileExt . '?' . mt_rand() . '" width="60" height="65">';
+              echo '<li class="nav-item"">';
+              echo '<a class="nav-link" style="margin-top:20px;" href="#">Welcome, '. $_SESSION['user_name'] .'</a>';
               echo '</li>';
 
-              echo '<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              echo '<a class="nav-link dropdown-toggle" style="margin-top:20px;" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="views/edit_profile.php">Edit Profile</a>
@@ -68,7 +68,6 @@
           <a class="nav-link" href="signin.php" style="display:none;">username</a>
        </li>
       </ul>
-  </div>
-  <!-- <img src="images/Qlogo.png" width="80" alt="" srcset=""> -->
+    </div>
   </div>
 </nav>

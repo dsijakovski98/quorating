@@ -14,65 +14,57 @@
 <body>
 <div class="col-md-4"></div>
 <div class="signin-form container col-md-4">
-    <form action="" method="post">
+    <form action="../control/password-control.php" method="post">
 		<div class="form-header">
 			<h2 class="text-center">Create New Password</h2>
-			<h3 class="text-center">-QuoRating-</h3>
+			<br>
 		</div>
 		<div class="form-group">
-			<label>Enter Password</label>
+			<label>Enter old password</label>
+        	<input type="password" class="form-control" placeholder="Password" name="old_pass" autocomplete="off" required="required">
+        </div>
+		<div class="form-group">
+			<label>Enter new password</label>
         	<input type="password" class="form-control" placeholder="Password" name="pass1" autocomplete="off" required="required">
         </div>
         <div class="form-group">
-			<label>Confirm Password</label>
+			<label>Confirm new password</label>
             <input type="password" class="form-control" placeholder="Confirm Password" name="pass2" autocomplete="off" required="required">
         </div>
 		<div class="form-group">
 			<button type="submit" class="btn btn-primary btn-block btn-lg" name="change">Change</button>
 		</div>
+		<?php
+			if(isset($_GET['error'])) {
+				$error = $_GET['error'];
+
+				switch($error) {
+					case 'old':
+						echo"
+        					<div class='alert alert-danger'>
+        						<strong>Incorrect old password!</strong> 
+        					</div>
+						";
+						break;
+					case 'mismatch':
+						echo"
+							<div class='alert alert-danger'>
+								<strong>Your new password did't match with each other</strong> 
+							</div>
+						";
+						break;
+					case 'short':
+						echo"
+							<div class='alert alert-danger'>
+								<strong>Use at least 8 characters</strong> 
+							</div>
+						";
+						break;
+				}
+			}
+		?>
     </form>
 
-
-<?php 
-session_start();
-
-include("../model/queries.php"); 
-
-
-
-	if(isset($_POST['change'])){
-		
-		$user = $_SESSION['user_name'];
-	    $pass1 = $_POST['pass1'];
-	    $pass2 = $_POST['pass2'];
-
-	    if($pass1 != $pass2){
-	        echo"
-	          <div class='alert alert-danger'>
-	            <strong>Your new password did't match with each other</strong> 
-	          </div>
-	        ";
-	    }
-	    if($pass1 < 8 AND $pass2 < 8){
-	        echo"
-	          <div class='alert alert-danger'>
-	            <strong>Use at least 8 characters</strong> 
-	          </div>
-	        ";
-	    }
-	    if($pass1 == $pass2){
-			$q = new Queries();
-			$sql="UPDATE users SET user_pass='$pass1' WHERE user_email='$user_name'";
-			$params = array($user_name, $pass1, $user_email, $user_gender);
-    		$result = $q->query($sql, $params);
-            session_destroy();
-            echo"
-            	<script>alert('Go ahead and signin')</script>
-            	<script>window.open('../signin.php','_self')</script>
-            ";
-        }
-	}
-?>
 </div>
 </body>
 </html>

@@ -68,7 +68,13 @@
               </select>
               </td>
             </tr>
-            <tr><td></td><td><a class="btn btn-default" style="text-decoration: none;font-size: 15px;" href="../control/change_password.php"><i class="fa fa-key fa-fw" aria-hidden="true"></i> Change Password</a></td></tr>
+            <tr>
+              <td>
+              </td>
+              <td>
+                <a class="btn btn-default" style="text-decoration: none;font-size: 15px;" href="change_password.php"><i class="fa fa-key fa-fw" aria-hidden="true"></i> Change Password</a>
+              </td>
+            </tr>
 
             <tr align="center">
               <td colspan="6">
