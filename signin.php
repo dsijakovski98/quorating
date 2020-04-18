@@ -34,9 +34,6 @@
 		<div class="form-group">
 			<button type="submit" class="btn btn-primary btn-block btn-lg bg-dark" name="sign_in">Sign in</button>
 		</div>
-<<<<<<< HEAD
-		<?php include("signin_user_db.php"); ?>
-=======
 
 		<!-- PHP: ERROR MESSAGES FOR INVALID SIGN IN -->
 		<?php
@@ -55,7 +52,6 @@
 			}
 		?>
 
->>>>>>> cf8c7b31be27b2bf36a59114ad9187ba7bd86518
     </form>
 	<div class="text-center small">Don't have an account? <a href="signup.php" style="color:#111;">Create one</a></div>
 </div>

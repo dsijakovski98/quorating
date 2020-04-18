@@ -1,58 +1,53 @@
 <?php
-
-require_once '../control/movies-control.php'; // Da dobijam lista so filmovi
+    require_once '../control/movies-control.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
-        <?php 
-        include_once '../utils/bootstrap.php';
-        ?>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
+        <link rel="stylesheet" href="../css/bootstrap.min.css">
 		<title>Movie Review | Review</title>
 
-		<link rel="stylesheet" href="cssCategories/style.css">
+		<link rel="stylesheet" href="../css/cssCategories/style.css">
 	</head>
 
 	<body>
     <?php
-    include_once '../utils/navbar.php';
+        include_once 'other-navbar.php';
     ?>
+
+	<br>
+		<!-- GENRES -->
+		<div class="col-md-2 bg-dark rounded text-center" style="margin-top:15px;">
 		
-		<div id="site-content">
-			<main class="main-content">
-			<div class="container">
-				<div class="movie-list">
-				<?php foreach ( $data as $key => value ) :?>
-					<div class="movie">
-								<figure class="movie-poster"><img src="dummy/thumb-4.jpg" alt="#"></figure>
-								<div class="movie-title"><?php echo '["m_name"]'; ?></a></div>
-								<p><?php echo '$row[m_description]';?>></p>
-							</div>
-						</div>
-						
-						<div class="pagination">
-							<a href="#" class="page-number prev">Prev</a>
-							<span class="page-number current">1</span>
-							<a href="#" class="page-number">2</a>
-							<a href="#" class="page-number next">Next</a>
-						</div>
-					</div>
-				</div>
-			</main>
-			
+		<h2 class="text-center" style="margin-top:8px; user-select:none;">Search by genres</h2>
+			<?php foreach($genres as $genre): ?>
+			<a class="btn text-light font-weight-bold" style="font-size:1.5em;" href="#"><?php echo $genre;?></a>
+			<br>
+			<?php endforeach; ?>
+			<br>
 		</div>
-		
 
+		<div class="container col-md-offset-2">
+			<?php foreach ($data as $row): ?>
+			<div class="card" style="margin:1%; width:21rem; display:inline-block;">
+				<img class="rounded img-fluid" src="../images/popcorn.jpg">
+  				<div class="card-body">
+    				<h3 class="card-title text-dark"><?php echo $row['m_name']; ?></h3>
+    				<p class="card-text text-left text-dark">
+						<?php echo substr($row['m_description'], 0, 60) . "...";?>
+					</p>
+    				<a href="#" class="btn btn-primary">Read More</a>
+  				</div>
 
-		<script src="cssCategories/js/jquery-1.11.1.min.js"></script>
-		<script src="cssCategories/js/plugins.js"></script>
-		<script src="cssCategories/js/app.js"></script>
+			</div>
+			<?php endforeach; ?>
+		</div>
 		<?php
-        require '../utils/footer.php';
-        include_once '../utils/bootstrap_scripts.php';
+        	require '../utils/footer.php';
+        	include_once '../utils/bootstrap_scripts.php';
         ?>
 
 	</body>
