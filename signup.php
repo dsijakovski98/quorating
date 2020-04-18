@@ -5,17 +5,48 @@
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<?php
+		include_once 'utils/bootstrap.php'; 
+		include_once 'utils/bootstrap_scripts.php';
+	?>
     <link rel="stylesheet" type="text/css" href="css/signup.css">
 <body>
+
+	<?php
+		include_once 'utils/navbar.php';
+	?>
+
 	<div class="signup-form">
-		<form action="" method="post">
-			<div class="form-header">
+		<form action="includes/signup_user_db.php" method="post">
+			<div class="form-header bg-dark">
 				<h2>Sign Up</h2>
-				<p>Fill out this form and start rating your favourite movies, books & games!</p>
+				<p style="color:#fff;">Fill out this form and start rating your favourite movies, books & games!</p>
 			</div>
+
+			<!-- PHP: ERROR MESSAGES FOR INVALID SIGN UP -->
+			<?php
+				if(isset($_GET['error'])){
+					$errorMessage = "";
+					$error = $_GET['error'];
+
+					switch($error){
+						case 'pwd':
+							$errorMessage .= "Password must be at least 8 characters!";
+							break;
+						case 'email':
+							$errorMessage .= "Invalid e-mail address!";
+							break;
+						case 'uniqUser':
+							$errorMessage .= "Username already exists!";
+							break;
+						case 'uniqMail':
+							$errorMessage .= "E-mail address is already registered!";
+							break;
+					}
+					echo '<p class="text-danger text-center" style="margin:0;">'. $errorMessage .'</p>';
+				}
+			?>
+
 			<div class="form-group">
 			<label>Username</label>
 			<input type="text" class="form-control" name="user_name" placeholder="someone123" autocomplete="off" required>
@@ -37,16 +68,23 @@
 				<option>Other</option>
 			</select>
 			</div>
+			<!-- <div class="form-group">
+				<label class="checkbox-inline "><input type="checkbox" class="align-text-top" required> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
+			</div> -->
 			<div class="form-group">
-				<label class="checkbox-inline"><input type="checkbox" required>I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
-				
+				<button type="submit" class="btn btn-primary btn-block btn-lg bg-dark" name="sign_up">Sign up</button>
 			</div>
-			<div class="form-group">
-				<button type="submit" class="btn btn-primary btn-block btn-lg" name="sign_up">Sign up</button>
-			</div>
-			<?php include("signup_user_db.php"); ?>
 		</form>
-		<div class="text-center small" style="color:#674288">Already have an account?<a href="signin.php"> Sign in here</a></div>
+		<div class="text-center small" style="color:#674288">Already have an account?<a href="signin.php" style="color:#111;"> Sign in here</a></div>
 	</div>
+
+	<style>
+		p {
+			color:#000;
+		}
+	</style>
+	<?php
+		require 'utils/footer.php';
+	?>
 </body>
 </html>
