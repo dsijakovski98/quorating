@@ -18,9 +18,9 @@
 
 <div class="signin-form">
     <form action="includes/signin_user_db.php" method="post">
-		<div class="form-header">
+		<div class="form-header bg-dark">
 			<h2>Sign In</h2>
-			<p>Login to QuoRate</p>
+			<p style="color:#fff;">Login to QuoRate</p>
 		</div>
 		<div class="form-group">
 			<label>Email</label>
@@ -30,9 +30,9 @@
 			<label>Password</label>
             <input type="password" class="form-control" placeholder="Password" name="pass" autocomplete="off" required="required">
         </div>
-        <div class="small">Forgot password? <a href="forgot_pass.php">Click Here</a></div><br>
+        <div class="small">Forgot password? <a href="views/forgot_password.php" style="color:#111;">Click Here</a></div><br>
 		<div class="form-group">
-			<button type="submit" class="btn btn-primary btn-block btn-lg" name="sign_in">Sign in</button>
+			<button type="submit" class="btn btn-primary btn-block btn-lg bg-dark" name="sign_in">Sign in</button>
 		</div>
 
 		<!-- PHP: ERROR MESSAGES FOR INVALID SIGN IN -->
@@ -53,10 +53,14 @@
 		?>
 
     </form>
-	<div class="text-center small" style='color:#67428B;'>Don't have an account? <a href="signup.php">Create one</a></div>
+	<div class="text-center small">Don't have an account? <a href="signup.php" style="color:#111;">Create one</a></div>
 </div>
 
-
+<style>
+		p {
+			color:#000;
+		}
+	</style>
 <?php
 	require 'utils/footer.php';
 	include_once 'utils/bootstrap_scripts.php';

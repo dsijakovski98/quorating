@@ -25,8 +25,8 @@
 
 >>> Tommorow
 * Connect links:
-	- About page []
-	- Categories pages []
+	- About page [x]
+	- Categories pages [x]
 	- Login/Register page [x]
-* Add error handling to profile updating []
+* Add error handling to profile updating [x]
 * Add password recovery mechanism []

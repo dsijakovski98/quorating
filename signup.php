@@ -18,9 +18,9 @@
 
 	<div class="signup-form">
 		<form action="includes/signup_user_db.php" method="post">
-			<div class="form-header">
+			<div class="form-header bg-dark">
 				<h2>Sign Up</h2>
-				<p>Fill out this form and start rating your favourite movies, books & games!</p>
+				<p style="color:#fff;">Fill out this form and start rating your favourite movies, books & games!</p>
 			</div>
 
 			<!-- PHP: ERROR MESSAGES FOR INVALID SIGN UP -->
@@ -72,12 +72,17 @@
 				<label class="checkbox-inline "><input type="checkbox" class="align-text-top" required> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
 			</div> -->
 			<div class="form-group">
-				<button type="submit" class="btn btn-primary btn-block btn-lg" name="sign_up">Sign up</button>
+				<button type="submit" class="btn btn-primary btn-block btn-lg bg-dark" name="sign_up">Sign up</button>
 			</div>
 		</form>
-		<div class="text-center small" style="color:#674288">Already have an account?<a href="signin.php"> Sign in here</a></div>
+		<div class="text-center small" style="color:#674288">Already have an account?<a href="signin.php" style="color:#111;"> Sign in here</a></div>
 	</div>
 
+	<style>
+		p {
+			color:#000;
+		}
+	</style>
 	<?php
 		require 'utils/footer.php';
 	?>

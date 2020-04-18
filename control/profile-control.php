@@ -15,10 +15,10 @@ if(isset($uname)){
     $new_email = htmlentities($_POST['u_email']);
     $new_gender = htmlentities($_POST['u_gender']);
 
-
     $updated_uname = "";
     $updated_email = "";
     $updated_gender = "";
+
 
     if($user_name !== $new_uname) {
         $updated_uname = $new_uname;

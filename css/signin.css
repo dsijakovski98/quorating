@@ -60,11 +60,11 @@ body{
 		min-width: 200px;
     }
 	.signin-form .btn:hover, .signin-form .btn:focus{
-		background: #00b073 !important;
+		background: #777 !important;
         outline: none;
 	}
     .signin-form a{
-		color: #00cb82;		
+		color: #777;		
 	}
     .signin-form a:hover{
 		text-decoration: underline;
