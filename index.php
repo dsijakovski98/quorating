@@ -25,7 +25,7 @@
     <br>
     <div class="row">
         <div class="col-md-4 col-sm-12 Dcontent bg-dark text-center">
-            <a class="text-light" href="views/movies.php"><h2>Movies</h2></a>
+            <a class="text-light" href="views/media-list.php?c=1"><h2>Movies</h2></a>
             <br>
             <img class="img-fluid thumbnail" src="images/popcorn.jpg" alt="">
             <br>
@@ -34,12 +34,12 @@
             <h1></h1>
         </div>
         <div class="col-md-4 col-sm-12 Dcontent bg-light text-center">
-            <a class="text-dark" href="views/books.php"><h2>Books</h2></a>
+            <a class="text-dark" href="views/media-list.php?c=2"><h2>Books</h2></a>
             <br>
             <img class="img-fluid thumbnail" src="images/books.jpg" alt="">
         </div>
             <div class="col-md-4 col-sm-12 Dcontent bg-dark text-center">
-            <a class="text-light" href="views/games.php"><h2>Games</h2></a>
+            <a class="text-light" href="views/media-list.php?c=3"><h2>Games</h2></a>
             <br>
             <img class="img-fluid thumbnail" src="images/video-games.jpg" alt="">
         </div>

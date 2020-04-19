@@ -19,9 +19,9 @@
           Categories
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="movies.php">Movies</a>
-          <a class="dropdown-item" href="books.php">Books</a>
-          <a class="dropdown-item" href="games.php">Games</a>
+          <a class="dropdown-item" href="media-list.php?c=1">Movies</a>
+          <a class="dropdown-item" href="media-list.php?c=2">Books</a>
+          <a class="dropdown-item" href="media-list.php?c=3">Games</a>
         </div>
       </li>
       </li>

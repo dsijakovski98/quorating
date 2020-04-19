@@ -30,14 +30,14 @@
 * Edit the front page:
 	- logo on left side [x]
 	- login/register button on right side [x]
-
-
-
->>> Tommorow
 * Connect links:
 	- About page [x]
 	- Categories pages [x]
 	- Login/Register page [x]
 * Add error handling to profile updating [x]
+* Media display pages [x]
+
+
+>>> LATER
+* Add e-mail verification []
 * Add password recovery mechanism []
->>>>>>> cf8c7b31be27b2bf36a59114ad9187ba7bd86518
