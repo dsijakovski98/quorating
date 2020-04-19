@@ -16,3 +16,5 @@ $params = array();
 $result = $q->query($sql, $params);
 $media = $result->fetch();
 
+
+
