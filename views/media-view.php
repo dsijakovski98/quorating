@@ -77,7 +77,7 @@ require_once '../control/media-view-control.php';
                     </tr>
                     <br>
                     <tr>
-                    <button class="btn btn-primary btn-block btn-lg bg-dark" style="height:50px;width:200px" name="goBack"><a href="media-list.php">Go Home</button>
+                    <button class="btn btn-primary btn-block btn-lg bg-dark" style="height:50px;width:200px" name="goBack"><a href="../">Go Home</button>
                     </tr>
                     
                     </table>

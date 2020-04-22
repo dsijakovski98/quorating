@@ -31,26 +31,35 @@
 					<a href="mailto:contact@companyname.com">quorating@gmail.com</a>
 				</li>
 			</ul>
-			<div class="form-group">
-				<label>Username</label>
-					<input type="text" class="form-control" placeholder="Username" name="username" autocomplete="off" required="required">
-			</div>    
-			<div class="form-group">
-				<label>Email</label>
-					<input type="text" class="form-control" placeholder="E-mail" name="email" autocomplete="off" required="required">
-			</div>
-			<div class="form-group">
-				<label>Message</label>   
-					<textarea type="text" class="form-control" placeholder="Tell us anything..." name="Message" autocomplete="off" required="required"></textarea>
-			</div> 
-			<div class="form-group">
-				<button type="submit" class="btn btn-primary btn-block btn-lg" name="submit">Submit</button>
-			</div>
-		</div>
 
+			<form method="post" action="send_mail.php">
+				<div class="form-group">
+					<label>Username</label>
+						<input type="text" class="form-control" placeholder="Username" name="username" autocomplete="off" required="required">
+				</div>    
 
+				<div class="form-group">
+					<label>To:</label>
+						<input type="text" class="form-control" placeholder="E-mail" name="email" autocomplete="off" required="required">
+				</div>
+
+				<div class="form-group">
+					<label>Subject</label>
+						<input type="text" class="form-control" placeholder="Subject" name="subject" autocomplete="off">
+				</div>    
+
+				<div class="form-group">
+					<label>Message</label>   
+						<textarea type="text" class="form-control" placeholder="Tell us anything..." name="Message" autocomplete="off" required="required"></textarea>
+				</div>
+
+				<div class="form-group">
+					<button type="submit" class="btn btn-primary btn-block btn-lg" name="submit">Submit</button>
+				</div>
+			</form>
 		</div>
 	</div>
+</div>
 </div> <!-- .container -->
 		<!-- Default snippet for navigation -->
 <?php
