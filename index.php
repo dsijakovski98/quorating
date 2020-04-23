@@ -20,7 +20,7 @@
 
 <body>
 <?php
-    require_page("/utils/navbar.php");    
+    require_page("utils/navbar.php");    
 ?>
 
 <!-- LAYOUT -->

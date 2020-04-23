@@ -73,7 +73,7 @@
               <td>
               </td>
               <td>
-                <a class="btn btn-default" style="text-decoration: none;font-size: 15px;" href="<?php echo $website; ?>change_password.php"><i class="fa fa-key fa-fw" aria-hidden="true"></i> Change Password</a>
+                <a class="btn btn-default" style="text-decoration: none;font-size: 15px;" href="<?php echo $website; ?>views/change_password.php"><i class="fa fa-key fa-fw" aria-hidden="true"></i> Change Password</a>
               </td>
             </tr>
 

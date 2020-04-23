@@ -88,7 +88,7 @@ require_once("../control/media-view-control.php");
                     <table>
                     
                     <tr>
-                    <div align="center" class="bg-dark" padding: 100px; color:white;>
+                    <div align="center" class="bg-dark" padding: 100px; color:black;>
                         <i class="far fa-lightbulb" data-index="0"></i>
                         <i class="far fa-lightbulb" data-index="1"></i>
                         <i class="far fa-lightbulb" data-index="2"></i>
