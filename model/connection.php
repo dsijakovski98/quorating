@@ -1,10 +1,16 @@
 <?php
 
+define('PASSWORD_MAX_LENGTH', 8);
+
+define('DATABASE_USERNAME', 'Wu2T1HvhJH');
+define('DATABASE_PASSWORD', 'TTHSf0wGkN');
+define('DATABASE_NAME', 'Wu2T1HvhJH');
+
 class Connection {
   private $dbHost = "remotemysql.com";
-  private $dbUser = "Wu2T1HvhJH";
-  private $dbPassword = "TTHSf0wGkN";
-  private $dbName = "Wu2T1HvhJH";
+  private $dbUser = DATABASE_USERNAME;
+  private $dbPassword = DATABASE_PASSWORD;
+  private $dbName = DATABASE_NAME;
 
   protected function connect()
   {

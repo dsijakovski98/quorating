@@ -1,7 +1,10 @@
 <?php
 
+require_once '../utils/include.php';
+
 if(!isset($_POST['submit-media'])){
-    header("Location: ../index.php");
+    $path = $website . "index.php";
+    header("Location: " . $path);
     exit();
 }
 
@@ -19,17 +22,17 @@ require_once '../control/media-view-control.php';
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
-        <link rel="stylesheet" href="../css/bootstrap.min.css">
-		<!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
 		<title><?php echo "$table Review | Review"; ?></title>
-		<link rel="stylesheet" href="../css/cssCategories/style.css">
-  		<link rel="stylesheet" href="../css/styles.css">
+        
+        <link rel="stylesheet" href="<?php echo $website; ?>css/bootstrap.min.css">
+		<link rel="stylesheet" href="<?php echo $website; ?>css/cssCategories/style.css">
+  		<link rel="stylesheet" href="<?php echo $website; ?>css/styles.css">
 
 	</head>
 
 	<body>
     <?php
-        include_once 'other-navbar.php';
+        require_page("utils/navbar.php");
         // Capitalizing the first character of the table name ("movies" -> "Movies")
         $categorie_name = ucfirst($table);
         // Removing the last character from the name ("Movies -> Movie")
@@ -41,7 +44,7 @@ require_once '../control/media-view-control.php';
 			<div class="row">
 
             <div class="col-md-6">
-					<figure class="movie-poster"><img src="../images/thumb-3.jpg" alt="#"></figure>
+					<figure class="movie-poster"><img src="<?php echo $website; ?>images/thumb-3.jpg" alt="#"></figure>
                 </div>
                 
 				<div class="col-md-6">
@@ -71,12 +74,11 @@ require_once '../control/media-view-control.php';
         </div><!-- .content-->
         
 		<?php
-        	require '../utils/footer.php';
+        	require_page("utils/footer.php");
         ?>
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-		<!-- <script src="js/bootstrap.bundle.min.js"></script> -->
-        <script src="../js/bootstrap.min.js"></script>
+        <script src="..<?php echo $website; ?>js/bootstrap.min.js"></script>
         
 	</body>
 

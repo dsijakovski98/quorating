@@ -15,4 +15,12 @@ class Queries extends Connection{
             return $statement;   
         }
     }
+
+    public function getRowCount($result) {
+        return $result->rowCount();
+    }
+
+    public function getData($result) {
+        return $result->fetch();
+    }
 }

@@ -15,7 +15,7 @@ if(isset($_POST['change'])) {
     $params = array($user);
     $result = $q->query($sql, $params);
 
-    $data = $result->fetch();
+    $data = $q->getData($result);
     $hashedPass = $data['user_pass'];
 
     $oldPasswordCheck = password_verify($old_pass, $hashedPass);

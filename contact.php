@@ -1,3 +1,7 @@
+<?php
+	require_once 'utils/include.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,13 +10,12 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<?php
-		require_once 'utils/bootstrap.php';
+		require_page("utils/bootstrap.php");
 	?>
-	<!-- <link rel="stylesheet" type="text/css" href="css/signin.css"> -->
 </head>
 <body>
 <?php
-	include_once 'utils/navbar.php';
+	require_page("utils/navbar.php");
 ?>
 
 <div class="container">
@@ -52,10 +55,9 @@
 		</div>
 	</div>
 </div> <!-- .container -->
-		<!-- Default snippet for navigation -->
 <?php
-	require_once 'utils/footer.php';
-	require_once 'utils/bootstrap_scripts.php';
+	require_page("utils/footer.php");
+	require_page("utils/bootstrap_scripts.php");
 ?>	
 </body>
 </html>

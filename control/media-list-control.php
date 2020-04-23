@@ -6,7 +6,7 @@ if(!isset($_GET['c'])){
 }
 
 $categorie = (int)$_GET['c'];
-require_once '../model/queries.php';
+require_page("model/queries.php");
 
 $q = new Queries();
 

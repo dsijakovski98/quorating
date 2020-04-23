@@ -1,13 +1,7 @@
 <?php
-
-require_once("queries.php");
-
 session_start();
-$uname = $_SESSION['user_name'];
-$q = new Queries();
-$sql = "SELECT * FROM users WHERE user_name = ?";
-$params = array($uname);
-
-
-$user = $q->query($sql, $params);
-$user_info = $user->fetch();
+$user_info = array();
+$user_info['user_name'] = $_SESSION['user_name'];
+$user_info['user_email'] = $_SESSION['user_email'];
+$user_info['user_gender'] = $_SESSION['user_gender'];
+$user_info['user_id'] = $_SESSION['user_id'];

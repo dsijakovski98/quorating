@@ -1,3 +1,8 @@
+<?php
+	require_once 'utils/include.php';
+	require_page("control/authentication_controller.php"); 
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,19 +10,25 @@
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<?php
-		include_once 'utils/bootstrap.php'; 
-		include_once 'utils/bootstrap_scripts.php';
-	?>
-    <link rel="stylesheet" type="text/css" href="css/signup.css">
+	
+	<link rel="stylesheet" href="<?php echo $website; ?>css/bootstrap.min.css">
+	<link rel="stylesheet" href="<?php echo $website; ?>css/styles.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo $website; ?>css/signup.css">
+	
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+	</script>
+	<script src="<?php echo $website; ?>js/bootstrap.min.js"></script>
+
+	
+</head>
 <body>
 
 	<?php
-		include_once 'utils/navbar.php';
+		require_page("utils/navbar.php");
 	?>
 
 	<div class="signup-form">
-		<form action="includes/signup_user_db.php" method="post">
+		<form action="<?php echo $website; ?>signin.php" method="post">
 			<div class="form-header bg-dark">
 				<h2>Sign Up</h2>
 				<p style="color:#fff;">Fill out this form and start rating your favourite movies, books & games!</p>
@@ -68,14 +79,11 @@
 				<option>Other</option>
 			</select>
 			</div>
-			<!-- <div class="form-group">
-				<label class="checkbox-inline "><input type="checkbox" class="align-text-top" required> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
-			</div> -->
 			<div class="form-group">
 				<button type="submit" class="btn btn-primary btn-block btn-lg bg-dark" name="sign_up">Sign up</button>
 			</div>
 		</form>
-		<div class="text-center small" style="color:#674288">Already have an account?<a href="signin.php" style="color:#111;"> Sign in here</a></div>
+		<div class="text-center small" style="color:#674288">Already have an account?<a href="<?php echo $website; ?>signin.php" style="color:#111;"> Sign in here</a></div>
 	</div>
 
 	<style>
@@ -84,7 +92,7 @@
 		}
 	</style>
 	<?php
-		require 'utils/footer.php';
+		require_page("utils/footer.php");
 	?>
 </body>
 </html>
