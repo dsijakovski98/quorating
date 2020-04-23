@@ -1,9 +1,9 @@
 <?php
 
-if(!isset($_POST['submit-media'])){
-    header("Location: ../index.php");
-    exit();
-}
+// if(!isset($_POST['submit-media'])){
+//     header("Location: ../index.php");
+//     exit();
+// }
 
 // Here we get the info about the media
 require_once '../model/queries.php';

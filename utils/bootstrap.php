@@ -1,2 +1,2 @@
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="/quorating/css/bootstrap.min.css">
+<link rel="stylesheet" href="/quorating/css/styles.css">

@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 require_once '../utils/include.php';
 
 if(!isset($_POST['submit-media'])){
@@ -12,7 +14,8 @@ $categorie = $_POST['categorie'];
 $id = $_POST['media_id'];
 $table = $_POST['table_name'];
 
-require_once '../control/media-view-control.php';
+
+require_once("../control/media-view-control.php");
 ?>
 
 <!DOCTYPE html>
@@ -21,20 +24,12 @@ require_once '../control/media-view-control.php';
 	<head>
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<<<<<<< HEAD
         <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
-=======
-        <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1" user-scalable=no>
-        <link rel="stylesheet" href="../css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-		<!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
->>>>>>> 71ea84b00f97cdb38a24090b37e3c2a603a85d03
-		<title><?php echo "$table Review | Review"; ?></title>
-        
-        <link rel="stylesheet" href="<?php echo $website; ?>css/bootstrap.min.css">
-		<link rel="stylesheet" href="<?php echo $website; ?>css/cssCategories/style.css">
-  		<link rel="stylesheet" href="<?php echo $website; ?>css/styles.css">
-
+		<title><?php echo ucfirst($table) . " Review | Review"; ?></title>
+        <?php
+            require_page("utils/bootstrap_scripts.php");
+            require_page("utils/bootstrap.php");
+        ?>
 	</head>
 
 	<body>
@@ -46,38 +41,49 @@ require_once '../control/media-view-control.php';
         $categorie_name = substr($categorie_name, 0, -1);
     ?>
     <br>
-        
+    <div class="container">
+       
         <div class="content" >
 			<div class="row">
 
-<<<<<<< HEAD
             <div class="col-md-6">
 					<figure class="movie-poster"><img src="<?php echo $website; ?>images/thumb-3.jpg" alt="#"></figure>
-=======
-            <div class="col-md-6" align="center">
-					<figure class="movie-poster"><img src="../images/thumb-3.jpg" alt="#"></figure>
->>>>>>> 71ea84b00f97cdb38a24090b37e3c2a603a85d03
                 </div>
                 
 				<div class="col-md-6">
 
-                    <h3 class="movie-title"><?php echo $categorie_name .' name: ' . $media['name'] . '<br>'; ?></h3>
+                    <h3 class="movie-title"><?php echo $media['name'] . '<br>'; ?></h3>
                     
 					<div class="movie-summary">
-						<p><?php echo $categorie_name .' description: ' . $media['description'] . '<br>';?></p>
+						<p><?php echo $media['description'] . '<br>';?></p>
                     </div>
                     
 					<ul class="movie-meta">
-						<li><?php echo $categorie_name .' genre: ' . $media['genre'] . '<br>';?></li>
+						<li><?php echo 'Genre: ' . ucfirst($media['genre']) . '<br>';?></li>
 					</ul>
 
 					<ul class="starring">
-						<li><?php echo $categorie_name .' created by: ' . $media['creator'] . '<br>'; ?></li>
+                        <?php
+                        $creator = "";
+                        switch($categorie_name) {
+                            case 'Book':
+                                $creator = "Author";
+                            break;
+
+                            case 'Movie':
+                                $creator = "Director";
+                            break;
+
+                            case 'Game':
+                                $creator = "Developer";
+                        }
+                        ?>
+						<li><?php echo $creator . ': ' . $media['creator'] . '<br>'; ?></li>
                     </ul>
                     
                     <ul>
-                    <li><strong>Rating:</strong> 
-							<div class="star-rating" title="Rated 4.00 out of 5"><span style="width:80%"><strong class="rating">4.00</strong> out of 5</span></div></li>
+                    <li><strong>Rating: </strong> 
+							<div class="star-rating" title="Rated 4.00 out of 5" style="display:inline-block;"><span style="width:80%"><strong class="rating"> <?php echo $media['score']; ?></strong> out of 5</span></div></li>
                     </ul>
                     <table>
                     
@@ -90,9 +96,6 @@ require_once '../control/media-view-control.php';
                         <i class="far fa-lightbulb" data-index="4"></i>
                     </tr>
                     <br>
-                    <tr>
-                    <button class="btn btn-primary btn-block btn-lg bg-dark" style="height:50px;width:200px" name="goBack"><a href="../">Go Home</button>
-                    </tr>
                     
                     </table>
                         <br><br>
@@ -138,17 +141,15 @@ require_once '../control/media-view-control.php';
                     function resetBulbColors() {
                     $('.fa-lightbulb').css('color', 'white');
                     }
-    </script>
+                </script>
 				</div><!--.col-md-6-->
             </div> <!-- .row -->
         </div><!-- .content-->
+        </div> 
         
 		<?php
         	require_page("utils/footer.php");
         ?>
-
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="..<?php echo $website; ?>js/bootstrap.min.js"></script>
         
 	</body>
 
