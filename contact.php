@@ -35,7 +35,7 @@
 				</li>
 			</ul>
 
-			<form method="post" action="send_mail.php">
+			<form method="post" action="<?php echo $website; ?>send_mail.php">
 				<div class="form-group">
 					<label>Username</label>
 						<input type="text" class="form-control" placeholder="Username" name="username" autocomplete="off" required="required">
