@@ -125,7 +125,7 @@ if(isset($_POST['sign_up'])) {
         $params = array($user_name);
         $result = $q->query($sql, $params);
         $user_info = $q->getData($result);
-        
+      
         $user_id = $user_info['id'];
 
         $sql = 'INSERT INTO images (id, extension, hasPicture) VALUES (?, "jpg", 0)';
