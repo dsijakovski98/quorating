@@ -113,9 +113,34 @@ require_once("../control/media-view-control.php");
                     </tr>
                     <br>
                     
-                    </table>
-                        <br><br>
-            </div><!--col-md-6-->
+                </table>
+
+                <!-- comments section -->
+		        <div class="col-md-6 ">
+			        <!-- comment form -->
+			        <form class="clearfix" action="#" method="post" id="comment_form">
+				        <h4>Post a comment:</h4>
+				        <textarea name="comment_text" id="comment_text" class="form-control" cols="30" rows="3"></textarea>
+				        <button class="btn btn-primary btn-sm pull-right" id="submit_comment">Submit comment</button>
+			        </form>
+
+			        <!-- Display total number of comments on this post  -->
+			        <h2><span id="comments_count">0</span> Comment(s)</h2>
+			        <hr>
+			    
+			        <div id="comments-wrapper">
+				        <div class="comment clearfix">
+						    <img src="#" alt="" class="profile_pic">
+					        <div class="comment-details">
+						        <span class="comment-name">Melvine</span>
+						        <span class="comment-date">Apr 24, 2018</span>
+						        <p>This is the first reply to this post on this website.</p>
+				            </div>
+                        </div>
+			        </div><!-- comments wrapper -->
+                </div><!--col-md-6-->
+                <br><br>
+            </div>
 
             <script src="http://code.jquery.com/jquery-3.4.0.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
             <script>
@@ -160,29 +185,7 @@ require_once("../control/media-view-control.php");
                 }
             </script>
 
-            <!-- comments section -->
-		    <div class="col-md-6 col-md-offset-3 comments-section">
-			<!-- comment form -->
-			    <form class="clearfix" action="#" method="post" id="comment_form">
-				    <h4>Post a comment:</h4>
-				    <textarea name="comment_text" id="comment_text" class="form-control" cols="30" rows="3"></textarea>
-				    <button class="btn btn-primary btn-sm pull-right" id="submit_comment">Submit comment</button>
-			    </form>
-
-			    <!-- Display total number of comments on this post  -->
-			    <h2><span id="comments_count">0</span> Comment(s)</h2>
-			    <hr>
-			    <!-- comments wrapper -->
-			    <div id="comments-wrapper">
-				    <div class="comment clearfix">
-						<img src="#" alt="" class="profile_pic">
-					<div class="comment-details">
-						<span class="comment-name">Melvine</span>
-						<span class="comment-date">Apr 24, 2018</span>
-						<p>This is the first reply to this post on this website.</p>
-				    </div>
-			    </div>
-            </div>
+            
 		    </div><!--Row--> 
         </div><!--Content--> 
     </div><!--Container-->    
