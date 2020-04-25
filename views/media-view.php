@@ -5,6 +5,7 @@ session_start();
 require_once '../utils/include.php';
 include '../model/connection.php';
 include '../model/comments.php';
+date_default_timezone_set('Europe/Copenhagen');
 
 
 if(!isset($_POST['submit-media'])){
@@ -104,12 +105,12 @@ require_once("../control/media-view-control.php");
 		        <div class="col-md-6 ">
 			        <!-- comment form -->
                     <?php
-			        echo "<action='".setComments()."' method='POST' id='comment_form'>
+                    echo "<form method='POST' action='".setComments()."'>
                         <h4>Post a comment:</h4>
                         <input type='hidden' name='user_id'>
                         <input type='hidden' name='date_added' value='".date('Y-m-d H:i:s')."'>
 				        <textarea name='COMMENT'cols='30' rows='3'></textarea><br>
-				        <button class='btn btn-primary btn-sm pull-right' name='commentSubmit'>Submit comment</button>
+				        <button class='btn btn-primary btn-sm pull-right' name='commentSubmit'>Comment</button>
                     </form>";
                     ?>
 
@@ -117,16 +118,16 @@ require_once("../control/media-view-control.php");
 			        <h2><span id="comments_count">0</span> Comment(s)</h2>
 			        <hr>
 			    
-			        <div id="comments-wrapper">
+			        <!--<div id="comments-wrapper">
 				        <div class="comment clearfix">
 						    <img src="#" alt="" class="profile_pic">
 					        <div class="comment-details">
-						        <span class="comment-name">Melvine</span>
+						        
 						        <span class="comment-date">Apr 24, 2018</span>
 						        <p>This is the first reply to this post on this website.</p>
 				            </div>
                         </div>
-			        </div><!-- comments wrapper -->
+			        </div>comments wrapper -->
                 </div><!--col-md-6-->
                 <br><br>
             </div>

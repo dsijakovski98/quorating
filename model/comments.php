@@ -4,8 +4,6 @@ include 'queries.php';
 
 function setComments()
 {
-    if(isset($_SESSION['user_id']))
-    {
         if(isset($_POST['commentSubmit']))
         {
             $user_id = $_POST['user_id'];
@@ -13,11 +11,11 @@ function setComments()
             $COMMENT = $_POST['COMMENT'];
 
             $q = new Queries();
-            $sql = "INSERT INTO user_comm (user_id, categorie_id, prod_id, COMMENT, r_date) VALUES(:user_id, :categorie_id, :prod_id, :COMMEN, :r_date)";
+            $sql = "INSERT INTO user_comm (user_id, categorie_id, prod_id, COMMENT, r_date) 
+            VALUES(:user_id, :categorie_id, :prod_id, :COMMENT, :r_date)";
             $params = array($user_id, $catrgorie_id, $prod_id, $COMMENT, $r_date);
             $result = $q->query($sql, $params);
         }
-    }
 }
 
 function getComments()
