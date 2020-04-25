@@ -1,6 +1,7 @@
 <?php
 
 $website = "/quorating/";
+$website_mail = "quorating@gmail.com";
 
 function require_page($page){
     global $website;

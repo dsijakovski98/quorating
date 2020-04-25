@@ -1,6 +1,15 @@
 <?php
 session_start();
 
+// Log out
+if(isset($_GET['logout'])){
+  $_SESSION = array();
+  session_unset();
+  session_destroy();
+  header("Location: /quorating/index.php");
+  exit();
+}
+
 require_once 'utils/include.php';
 require_page("model/queries.php");
 
@@ -32,6 +41,7 @@ if(isset($_POST['sign_in'])) {
         $_SESSION['user_name'] = $row['user_name'];
         $_SESSION['user_email'] = $row['user_email'];
         $_SESSION['user_gender'] = $row['user_gender'];
+        $_SESSION['verified'] = $row['verified'];
         $_SESSION['user_id'] = $row['id'];
 
         $sql = "SELECT hasPicture, extension FROM images WHERE id = ?";
@@ -59,7 +69,6 @@ if(isset($_POST['sign_in'])) {
     }
 }
 
-
 // Sign up authentication
 if(isset($_POST['sign_up'])) {
     $user_name = htmlentities($_POST['user_name']);
@@ -86,7 +95,7 @@ if(isset($_POST['sign_up'])) {
     }
     else {
       // Check for unique username
-      $sql = "SELECT * FROM users WHERE user_name = ?";
+      $sql = "SELECT * FROM users WHERE user_name = ? LIMIT 1";
       $params = array($user_name);
       $result = $q->query($sql, $params);
 
@@ -98,7 +107,7 @@ if(isset($_POST['sign_up'])) {
       }
   
       // Check for unique email
-      $sql = "SELECT * FROM users WHERE user_email = ?";
+      $sql = "SELECT * FROM users WHERE user_email = ? LIMIT 1";
       $params = array($user_email);
       $result = $q->query($sql, $params);
 
@@ -114,10 +123,20 @@ if(isset($_POST['sign_up'])) {
   
       // Hash password
       $hashedPwd = password_hash($user_pass, PASSWORD_DEFAULT);
-  
       
-      $sql = "INSERT INTO users (user_name, user_pass, user_email, user_gender, admin) VALUES (?, ?, ?, ?, 0)";
-      $params = array($user_name, $hashedPwd, $user_email, $user_gender);
+      // After sign up account is not verified
+      $verified_account = 0;
+      
+      // Create token
+      $token = bin2hex(random_bytes(50));
+      
+      // Default admin rights is 0
+      $admin_rights = 0;
+      
+      $sql = "INSERT INTO users (user_name, user_pass, user_email, user_gender, verified, token, admin)
+      VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+      $params = array($user_name, $hashedPwd, $user_email, $user_gender, $verified_account, $token, $admin_rights);
       $result = $q->query($sql, $params);
     
       if($result) {
@@ -143,4 +162,3 @@ if(isset($_POST['sign_up'])) {
       }
     }
 }
-

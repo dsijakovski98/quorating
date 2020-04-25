@@ -58,7 +58,7 @@
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="' . $website . 'views/edit_profile.php">Edit Profile</a>
-              <a class="dropdown-item" href="' . $website . 'includes/logout.php">Logout</a>
+              <a name="logout" class="dropdown-item" href="' . $website . 'control/authentication_controller.php?logout=1">Logout</a>
             </div>';
             }
           ?>

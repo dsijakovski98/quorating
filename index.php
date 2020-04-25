@@ -1,4 +1,5 @@
-<?php 
+<?php
+    // session_start();
     // Find the relative path to the utils folder
     require_once 'utils/include.php';
     
@@ -28,9 +29,23 @@
     <div class="row">
         <div class="col-md-12">
             <h3 class="text-center">Rate your favorite movies from home</h3>
+            <br>
+            <?php 
+                if(isset($_SESSION['user_name'])){
+                    if($_SESSION['verified'] == 0){
+                    ?>
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <strong><a class="text-primary" href="<?php echo $website; ?>views/verify_email.php"> Please verify your account!</a></strong> Ratings and comments will be disabled otherwise. An e-mail has been sent to <strong><?php echo $_SESSION['user_email']; ?></strong>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <?php }
+                }
+            ?>
         </div>
     </div>
-    <br>
+    <!-- <br> -->
     <div class="row">
         <div class="col-md-4 col-sm-12 Dcontent bg-dark text-center">
             <a class="text-light" href="<?php echo $website; ?>views/media-list.php?c=1"><h2>Movies</h2></a>

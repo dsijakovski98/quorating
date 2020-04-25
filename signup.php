@@ -1,6 +1,12 @@
 <?php
 	require_once 'utils/include.php';
-	require_page("control/authentication_controller.php"); 
+	require_page("control/authentication_controller.php");
+
+	if(isset($_SESSION['user_name'])){
+		header("Location: index.php");
+		exit();
+	}
+
 ?>
 
 <!DOCTYPE html>

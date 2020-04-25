@@ -25,25 +25,27 @@
 			<h2>Contact</h2>
 			<ul style="margin-left:-20px;">
 				<li>
-					<span>QuoRating</span>
+					<span><u>QuoRating</u> - ул. "Руѓер Бошковиќ" бр. 18</span>
 				</li>
 				<li>
 					<a href="tel:1590912831">+389/70-352-918</a>
+					|
+					<a href="tel:1590912831">+389/70-372-921</a>
 				</li>
 				<li>
 					<a href="mailto:contact@companyname.com">quorating@gmail.com</a>
 				</li>
 			</ul>
 
-			<form method="post" action="<?php echo $website; ?>send_mail.php">
+			<form method="post" action="<?php echo $website; ?>control/contacting-controller.php">
 				<div class="form-group">
-					<label>Username</label>
-						<input type="text" class="form-control" placeholder="Username" name="username" autocomplete="off" required="required">
-				</div>    
+					<label>Name</label>
+						<input type="text" class="form-control" placeholder="Enter your name..." name="name" autocomplete="off" required="required">
+					</div>    
 
 				<div class="form-group">
-					<label>To:</label>
-						<input type="text" class="form-control" placeholder="E-mail" name="email" autocomplete="off" required="required">
+					<label>From:</label>
+						<input type="email" class="form-control" placeholder="E-mail..." name="email" autocomplete="off" required="required">
 				</div>
 
 				<div class="form-group">
@@ -53,11 +55,11 @@
 
 				<div class="form-group">
 					<label>Message</label>   
-						<textarea type="text" class="form-control" placeholder="Tell us anything..." name="Message" autocomplete="off" required="required"></textarea>
+						<textarea type="text" class="form-control" placeholder="Tell us anything..." name="body" autocomplete="off" required="required"></textarea>
 				</div>
 
 				<div class="form-group">
-					<button type="submit" class="btn btn-primary btn-block btn-lg" name="submit">Submit</button>
+					<button type="submit" class="btn btn-primary btn-block btn-lg" name="contact_submit">Submit</button>
 				</div>
 			</form>
 		</div>

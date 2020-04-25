@@ -38,6 +38,21 @@
 * Media display pages [x]
 
 
->>> LATER
-* Add e-mail verification []
+>>> 25/04/2019
+* Add e-mail verification:
+	- Update users table (verified, token) columns [x]
+	- Update code in sign up file (add columns) [x]
+	- Update code in sign in file (add session verified variable) [x]
+	- Update code in index file (check for verification after sign in) [x]
+	- Add PHPMailer class wraper [x]
+	- Create mailing functionality for verification []
+* Create mailing functionality for contacting:
+	- Update html (remove elements) [x]
+	- Create contact mail controller [x]
+	- Add input verification:
+		- check if email exists []
+
+ 
 * Add password recovery mechanism []
+* Fix profile picture uploading:
+	- Delete existing picture []
