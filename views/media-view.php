@@ -14,6 +14,23 @@ $categorie = $_POST['categorie'];
 $id = $_POST['media_id'];
 $table = $_POST['table_name'];
 
+if(isset($_SESSION['user_id']))
+{
+    $user_id=$_POST['user_id'];
+    $categorie_id=$_POST['categorie_id'];
+    $prod_id=$_POST['prod_id'];
+    $rating=$_POST['rating'];
+    $r_date=$_POST['r_date'];
+
+    $q = new Queries();
+    $sql = "INSERT INTO user_rate 
+    (user_id,categorie_id,prod_id,rating,r_date) VALUES
+    (:user_id,:categorie_id,:prod_id,:rating,:r_date)";
+    $params = array($user_id,$catrgorie_id,$prod_id,$rating,$r_date);
+    $result = $q->query($sql, $params);
+
+}
+
 
 require_once("../control/media-view-control.php");
 ?>
@@ -25,6 +42,7 @@ require_once("../control/media-view-control.php");
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 		<title><?php echo ucfirst($table) . " Review | Review"; ?></title>
         <?php
             require_page("utils/bootstrap_scripts.php");
@@ -103,6 +121,7 @@ require_once("../control/media-view-control.php");
 
                     <script src="http://code.jquery.com/jquery-3.4.0.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
                     <script>
+                    //vo ovoj del ne znam kako da go smenam za da rab so user_id a ne so local storage :(
                         var ratedIndex = -1, uID = 0;
 
                         $(document).ready(function () {
