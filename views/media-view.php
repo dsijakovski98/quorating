@@ -3,6 +3,9 @@
 session_start();
 
 require_once '../utils/include.php';
+include '../model/connection.php';
+include '../model/comments.php';
+
 
 if(!isset($_POST['submit-media'])){
     $path = $website . "index.php";
@@ -13,24 +16,6 @@ if(!isset($_POST['submit-media'])){
 $categorie = $_POST['categorie'];
 $id = $_POST['media_id'];
 $table = $_POST['table_name'];
-
-if(isset($_SESSION['user_id']))
-{
-    $user_id=$_POST['user_id'];
-    $categorie_id=$_POST['categorie_id'];
-    $prod_id=$_POST['prod_id'];
-    $rating=$_POST['rating'];
-    $r_date=$_POST['r_date'];
-
-    $q = new Queries();
-    $sql = "INSERT INTO user_rate 
-    (user_id,categorie_id,prod_id,rating,r_date) VALUES
-    (:user_id,:categorie_id,:prod_id,:rating,:r_date)";
-    $params = array($user_id,$catrgorie_id,$prod_id,$rating,$r_date);
-    $result = $q->query($sql, $params);
-
-}
-
 
 require_once("../control/media-view-control.php");
 ?>
@@ -60,8 +45,8 @@ require_once("../control/media-view-control.php");
     ?>
     <br>
     <div class="container">
-       <div class="content" >
-		<div class="row">
+        <div class="content" >
+	    <div class="row">
             <div class="col-md-6">
 				<figure class="movie-poster"><img src="<?php echo $website; ?>images/thumb-3.jpg" alt="#"></figure>
             </div>
@@ -118,11 +103,15 @@ require_once("../control/media-view-control.php");
                 <!-- comments section -->
 		        <div class="col-md-6 ">
 			        <!-- comment form -->
-			        <form class="clearfix" action="#" method="post" id="comment_form">
-				        <h4>Post a comment:</h4>
-				        <textarea name="comment_text" id="comment_text" class="form-control" cols="30" rows="3"></textarea>
-				        <button class="btn btn-primary btn-sm pull-right" id="submit_comment">Submit comment</button>
-			        </form>
+                    <?php
+			        echo "<action='".setComments()."' method='POST' id='comment_form'>
+                        <h4>Post a comment:</h4>
+                        <input type='hidden' name='user_id'>
+                        <input type='hidden' name='date_added' value='".date('Y-m-d H:i:s')."'>
+				        <textarea name='COMMENT'cols='30' rows='3'></textarea><br>
+				        <button class='btn btn-primary btn-sm pull-right' name='commentSubmit'>Submit comment</button>
+                    </form>";
+                    ?>
 
 			        <!-- Display total number of comments on this post  -->
 			        <h2><span id="comments_count">0</span> Comment(s)</h2>
@@ -184,9 +173,7 @@ require_once("../control/media-view-control.php");
                 $('.fa-lightbulb').css('color', 'white');
                 }
             </script>
-
-            
-		    </div><!--Row--> 
+		</div><!--Row--> 
         </div><!--Content--> 
     </div><!--Container-->    
     <!-- Javascripts -->
