@@ -15,8 +15,8 @@ if(!isset($_POST['submit-media'])){
     exit();
 }
 
-$categorie = $_POST['categorie'];
-$id = $_POST['media_id'];
+$categorie_id = $_POST['categorie'];
+$product_id = $_POST['media_id'];
 $table = $_POST['table_name'];
 
 require_once("../control/media-view-control.php");
@@ -48,132 +48,98 @@ require_once("../control/media-view-control.php");
     <br>
     <div class="container">
         <div class="content" >
-	    <div class="row">
-            <div class="col-md-6">
-				<figure class="movie-poster"><img src="<?php echo $website; ?>images/thumb-3.jpg" alt="#"></figure>
-            </div>
-                
-			<div class="col-md-6">
-
-                <h3 class="movie-title"><?php echo $media['name'] . '<br>'; ?></h3>
-                    
-				<div class="movie-summary">
-					<p><?php echo $media['description'] . '<br>';?></p>
+            <div class="row">
+                <div class="col-md-6">
+                    <figure><img class="img-fluid rounded" src="<?php echo $website; ?>images/popcorn.jpg" alt="#" width="550px;"></figure>
                 </div>
                     
-				<ul class="movie-meta">
-					<li><?php echo 'Genre: ' . ucfirst($media['genre']) . '<br>';?></li>
-				</ul>
+                <div class="col-md-6">
 
-				<ul class="starring">
-                    <?php
-                        $creator = "";
-                        switch($categorie_name) {
-                            case 'Book':
-                                $creator = "Author";
-                            break;
+                    <h3 class="movie-title"><?php echo $media['name'] . '<br>'; ?></h3>
+                        
+                    <div class="movie-summary">
+                        <p><?php echo $media['description'] . '<br>';?></p>
+                    </div>
+                        
+                    <ul class="movie-meta">
+                        <li><?php echo 'Genre: ' . ucfirst($media['genre']) . '<br>';?></li>
+                    </ul>
 
-                            case 'Movie':
-                                $creator = "Director";
-                            break;
+                    <ul class="starring">
+                        <?php
+                            $creator = "";
+                            switch($categorie_name) {
+                                case 'Book':
+                                    $creator = "Author";
+                                break;
 
-                            case 'Game':
-                                $creator = "Developer";
-                        }
-                    ?>
-					<li><?php echo $creator . ': ' . $media['creator'] . '<br>'; ?></li>
-                </ul>
+                                case 'Movie':
+                                    $creator = "Director";
+                                break;
+
+                                case 'Game':
+                                    $creator = "Developer";
+                            }
+                        ?>
+                        <li><?php echo $creator . ': ' . $media['creator'] . '<br>'; ?></li>
+                    </ul>
+                        
+                    <ul>
+                        <li class="h5"><strong>Rating: 
+                            <div class="star-rating" style="display:inline-block;"><span style="width:80%"><?php echo $media['score']; ?>/5</strong></span></div></li>
+                    </ul>
+                    <?php if(isset($_SESSION['user_name'], $_SESSION['v']) && $_SESSION['v'] == 1): ?>
+                    <table>
+                        <tr>
+                            <div align="center" class="bg-dark rounded" style="padding:10px; color:black; width:150px; margin-left:20px; user-select:none;">
+                                <i class="bulb far fa-lightbulb" style="transform:scale(1.3); margin:4px; cursor:pointer;" data-index="0"></i>
+                                <i class="bulb far fa-lightbulb" style="transform:scale(1.3); margin:4px; cursor:pointer;" data-index="1"></i>
+                                <i class="bulb far fa-lightbulb" style="transform:scale(1.3); margin:4px; cursor:pointer;" data-index="2"></i>
+                                <i class="bulb far fa-lightbulb" style="transform:scale(1.3); margin:4px; cursor:pointer;" data-index="3"></i>
+                                <i class="bulb far fa-lightbulb" style="transform:scale(1.3); margin:4px; cursor:pointer;" data-index="4"></i>
+                            </div>
+                        </tr>
+                        <br>
+                        
+                    </table>
                     
-                <ul>
-                    <li><strong>Rating: </strong> 
-						<div class="star-rating" title="Rated 4.00 out of 5" style="display:inline-block;"><span style="width:80%"><strong class="rating"> <?php echo $media['score']; ?></strong> out of 5</span></div></li>
-                </ul>
-                <table>
-                    
-                    <tr>
-                        <div align="center" class="bg-dark" padding: 100px; color:black;>
-                            <i class="far fa-lightbulb" data-index="0"></i>
-                            <i class="far fa-lightbulb" data-index="1"></i>
-                            <i class="far fa-lightbulb" data-index="2"></i>
-                            <i class="far fa-lightbulb" data-index="3"></i>
-                            <i class="far fa-lightbulb" data-index="4"></i>
-                    </tr>
+                    <!-- COMMENTS SECTION -->
+                    <div class="col-md-6 ">
+
+                        <!-- COMMENTS FORM -->
+                        <form method='POST' action="<?php echo $website; ?>control/comments-controller.php">
+                            <h4>Post a comment:</h4>
+                            <input type='hidden' name='user_id' value="<?php echo $_SESSION['user_id'];?>">
+                            <input type='hidden' name='categorie_id' value="<?php echo $categorie_id; ?>">
+                            <input type='hidden' name='product_id' value="<?php echo $product_id; ?>">
+                            <input type='hidden' name='date_added' value="<?php echo date('Y-m-d H:i:s');?>">
+                            <textarea name='COMMENT'cols='50' rows='4'></textarea><br>
+                            <button class='btn btn-primary btn-sm pull-right' name='submit-comment'>Comment</button>
+                        </form>
+                        <br>
+                        <!-- Display total number of comments on this post  -->
+                        <h2><span id="comments_count">0</span> Comment(s)</h2>
+                        <hr>
+
+                        <!-- DISPLAYING ALL COMMENTS -->
+                        <?php getComments(); ?>
+                    </div><!--col-md-6-->
                     <br>
-                    
-                </table>
+                    <br>
 
-                <!-- comments section -->
-		        <div class="col-md-6 ">
-			        <!-- comment form -->
-                    <form method='POST' action="<?php echo $website; ?>control/comments-controller.php">
-                        <h4>Post a comment:</h4>
-                        <input type='hidden' name='user_id'>
-                        <input type='hidden' name='date_added' value='".date('Y-m-d H:i:s')."'>
-				        <textarea name='COMMENT'cols='30' rows='3'></textarea><br>
-				        <button class='btn btn-primary btn-sm pull-right' name='commentSubmit'>Comment</button>
-                    </form>
+                    <?php endif; ?>
+                </div>
 
-			        <!-- Display total number of comments on this post  -->
-			        <h2><span id="comments_count">0</span> Comment(s)</h2>
-			        <hr>
-                    <!-- DISPLAYING ALL COMMENTS -->
-                    <?php getComments(); ?>
-                </div><!--col-md-6-->
-                <br><br>
-            </div>
-
-            <script src="http://code.jquery.com/jquery-3.4.0.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
-            <script>
-                //vo ovoj del ne znam kako da go smenam za da rab so user_id a ne so local storage :(
-                var ratedIndex = -1, uID = 0;
-
-                $(document).ready(function () {
-                    resetBulbColors();
-
-                    if (localStorage.getItem('ratedIndex') != null) {
-                        setBulbs(parseInt(localStorage.getItem('ratedIndex')));
-                        uID = localStorage.getItem('uID');
-                    }
-
-                    $('.fa-lightbulb').on('click', function () {
-                        ratedIndex = parseInt($(this).data('index'));
-                        window.open("../index.php?rating="+ (ratedIndex+1));
-                    });
-
-                    $('.fa-lightbulb').mouseover(function () {
-                        resetBulbColors();
-                        var currentIndex = parseInt($(this).data('index'));
-                        setBulbs(currentIndex);
-                    });
-
-                    $('.fa-lightbulb').mouseleave(function () {
-                        resetBulbColors();
-
-                        if (ratedIndex != -1)
-                        setBulbs(ratedIndex);
-                    });
-                });
-
-                function setBulbs(max) {
-                    for (var i=0; i <= max; i++)
-                        $('.fa-lightbulb:eq('+i+')').css('color', 'yellow');
-                }
-
-                function resetBulbColors() {
-                $('.fa-lightbulb').css('color', 'white');
-                }
-            </script>
-		</div><!--Row--> 
+                <script src="http://code.jquery.com/jquery-3.4.0.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
+                <script src="<?php echo $website; ?>js/bulbs.js"></script>
+            </div><!--Row--> 
         </div><!--Content--> 
-    </div><!--Container-->    
-    <!-- Javascripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- Bootstrap Javascript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </div><!--Container-->
+
+
     <?php
         require_page("utils/footer.php");
-    ?>
-        
+    ?>    
     </body>
 
 </html>

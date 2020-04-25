@@ -37,7 +37,7 @@
             <br>
             <!-- PHP TO CHECK IF ACCOUNT IS VERIFIED -->
             <?php 
-                if(isset($_SESSION['verified'])){
+                if(isset($_SESSION['verified'])) {
                     if($_SESSION['verified'] == 0){
                     ?>
                     <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -48,6 +48,7 @@
                     </div>
                     <?php }
                     elseif($_SESSION['verified'] == 1) {
+                        $_SESSION['v'] = 1;
                         unset($_SESSION['verified']);
                     ?>
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -57,9 +58,9 @@
                         </button>
                     </div>
                     <?php
-                    }
+                        }
                 }
-            ?>
+                    ?>
         </div>
     </div>
     <!-- <br> -->

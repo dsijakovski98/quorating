@@ -59,11 +59,11 @@ OPTIONAL:
  
 * Add password recovery mechanism []
 * Fix profile picture uploading:
-	- Delete existing picture []
+	- Delete existing picture [x]
 
 
 >>> 26/04/2019
-* Get product id and categorie id from media-view-controller []
-* Reformat jquery code for ratings []
-* Style media-view page []
+* Get product id and categorie id from media-view-controller [x]
+* Reformat jquery code for ratings [x]
+* Style media-view page [x]
 * Insert ratings into database []

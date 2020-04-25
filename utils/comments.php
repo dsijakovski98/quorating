@@ -1,6 +1,6 @@
 <?php
 
-include 'queries.php';
+include '../model/queries.php';
 
 function setComments($id, $cat, $prod, $comment, $date)
 {
