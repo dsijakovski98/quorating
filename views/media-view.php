@@ -3,8 +3,9 @@
 session_start();
 
 require_once '../utils/include.php';
-include '../model/connection.php';
-include '../model/comments.php';
+require_page('model/connection.php');
+require_page('utils/comments.php');
+
 date_default_timezone_set('Europe/Copenhagen');
 
 
@@ -104,30 +105,19 @@ require_once("../control/media-view-control.php");
                 <!-- comments section -->
 		        <div class="col-md-6 ">
 			        <!-- comment form -->
-                    <?php
-                    echo "<form method='POST' action='".setComments()."'>
+                    <form method='POST' action="<?php echo $website; ?>control/comments-controller.php">
                         <h4>Post a comment:</h4>
                         <input type='hidden' name='user_id'>
                         <input type='hidden' name='date_added' value='".date('Y-m-d H:i:s')."'>
 				        <textarea name='COMMENT'cols='30' rows='3'></textarea><br>
 				        <button class='btn btn-primary btn-sm pull-right' name='commentSubmit'>Comment</button>
-                    </form>";
-                    ?>
+                    </form>
 
 			        <!-- Display total number of comments on this post  -->
 			        <h2><span id="comments_count">0</span> Comment(s)</h2>
 			        <hr>
-			    
-			        <!--<div id="comments-wrapper">
-				        <div class="comment clearfix">
-						    <img src="#" alt="" class="profile_pic">
-					        <div class="comment-details">
-						        
-						        <span class="comment-date">Apr 24, 2018</span>
-						        <p>This is the first reply to this post on this website.</p>
-				            </div>
-                        </div>
-			        </div>comments wrapper -->
+                    <!-- DISPLAYING ALL COMMENTS -->
+                    <?php getComments(); ?>
                 </div><!--col-md-6-->
                 <br><br>
             </div>
@@ -147,8 +137,7 @@ require_once("../control/media-view-control.php");
 
                     $('.fa-lightbulb').on('click', function () {
                         ratedIndex = parseInt($(this).data('index'));
-                        localStorage.setItem('ratedIndex', ratedIndex);
-                        saveToTheDB();
+                        window.open("../index.php?rating="+ (ratedIndex+1));
                     });
 
                     $('.fa-lightbulb').mouseover(function () {

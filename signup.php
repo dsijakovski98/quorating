@@ -53,14 +53,21 @@
 						case 'email':
 							$errorMessage .= "Invalid e-mail address!";
 							break;
+						case 'email-verify':
+							$errorMessage .= "E-mail address doesn't exist!";
+							break;
 						case 'uniqUser':
 							$errorMessage .= "Username already exists!";
 							break;
 						case 'uniqMail':
 							$errorMessage .= "E-mail address is already registered!";
 							break;
+						default;
+							break;
 					}
-					echo '<p class="text-danger text-center" style="margin:0;">'. $errorMessage .'</p>';
+					if(!empty($errorMessage)){
+						echo '<div class="alert alert-danger"><li class="text-danger text-center" style="margin:0;">'. $errorMessage .'</li></div>';
+					}
 				}
 			?>
 

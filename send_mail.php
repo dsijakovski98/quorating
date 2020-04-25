@@ -1,5 +1,5 @@
 <?php
-    require_once '../PHPMailer/PHPMailerAutoload.php';
+    require_once 'PHPMailer/PHPMailerAutoload.php';
 
     function send_mail(string $to, string $subject, string$body, $from = "", $name = "User", $multiple_users = 0){
         $mail = new PHPMailer();
@@ -32,6 +32,26 @@
 
         
         return $mail->Send();
+    }
+
+
+    function sendVerificationMail($userEmail, $token) {
+        $body = '<!doctype html>
+
+        <html lang="en">
+        <head>
+          <meta charset="utf-8">
+          <title>Verify e-mail address</title>
+        </head>
+        
+        <body>
+            <p>Thank you for signing up to our awesome website <b>Quorating</b>! <br> 
+                Please verify your e-mail address by clicking on the link below</p>
+            <a href="http://localhost/quorating/index.php?token=' . $token . '">Verify e-mail address</a>
+        </body>
+        </html>';
+        $subject = "Verify your e-mail address";
+        send_mail($userEmail, $subject, $body);
     }
     
 

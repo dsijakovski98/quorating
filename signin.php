@@ -56,14 +56,18 @@
 				$status = $_GET['error'];
 				$errorMessage = "Incorrect ";
 				
-				if($status === "user"){
-					$errorMessage .= "Username/E-mail";
+				if($status === "user") {
+					$errorMessage .= "Username/E-mail!";
 				}
-				else if($status === "pwd"){
-					$errorMessage .= "password";
+				else if($status === "pwd") {
+					$errorMessage .= "password!";
 				}
-				$errorMessage .= "! Please try again.";
-				echo '<p class="text-danger text-center" style="margin:0;">' . $errorMessage . '</p>';
+				else {
+					$errorMessage = "";
+				}
+				if(!empty($errorMessage)){
+					echo '<div class="alert alert-danger"><li class="text-danger text-center" style="margin:0;">' . $errorMessage . '</li></div>';
+				}
 			}
 		?>
 

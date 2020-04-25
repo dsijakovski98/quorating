@@ -5,6 +5,11 @@
     
     // Run this function to include any file as if from the root folder
     require_page("control/authentication_controller.php");
+
+    if(isset($_GET['token'])){
+        $token = $_GET['token'];
+        verifyUser($token);
+    }
 ?>
 
 
@@ -30,8 +35,9 @@
         <div class="col-md-12">
             <h3 class="text-center">Rate your favorite movies from home</h3>
             <br>
+            <!-- PHP TO CHECK IF ACCOUNT IS VERIFIED -->
             <?php 
-                if(isset($_SESSION['user_name'])){
+                if(isset($_SESSION['verified'])){
                     if($_SESSION['verified'] == 0){
                     ?>
                     <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -41,6 +47,17 @@
                         </button>
                     </div>
                     <?php }
+                    elseif($_SESSION['verified'] == 1) {
+                        unset($_SESSION['verified']);
+                    ?>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        Your account has been verified!
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <?php
+                    }
                 }
             ?>
         </div>

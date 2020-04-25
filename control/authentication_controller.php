@@ -11,6 +11,7 @@ if(isset($_GET['logout'])){
 }
 
 require_once 'utils/include.php';
+require_once 'send_mail.php';
 require_page("model/queries.php");
 
 $q = new Queries();
@@ -71,19 +72,20 @@ if(isset($_POST['sign_in'])) {
 
 // Sign up authentication
 if(isset($_POST['sign_up'])) {
-    $user_name = htmlentities($_POST['user_name']);
-    $user_email = htmlentities($_POST['user_email']);
-    $user_pass = htmlentities($_POST['user_pass']);
-    $user_gender = htmlentities($_POST['user_gender']);
-    
-
-    // VALIDATION
-
-    // Epmty fields [x]
   
-    // Password length >= 8
-    if (strlen($user_pass) < PASSWORD_MAX_LENGTH) {
-      $path = $website . "signup.php?error=pwd";
+  $user_name = htmlentities($_POST['user_name']);
+  $user_email = htmlentities($_POST['user_email']);
+  $user_pass = htmlentities($_POST['user_pass']);
+  $user_gender = htmlentities($_POST['user_gender']);
+  
+  
+  // VALIDATION
+  
+  // Epmty fields [x]
+  
+  // Password length >= 8
+  if (strlen($user_pass) < PASSWORD_MAX_LENGTH) {
+    $path = $website . "signup.php?error=pwd";
       header("Location: " . $path);
       exit();
     }
@@ -93,6 +95,20 @@ if(isset($_POST['sign_up'])) {
       header("Location: " . $path);
       exit();
     }
+    // E-mail existance verification
+    
+    // require_once 'classes/verify_mail.php';
+    // $mail = new VerifyEmail();
+    // $mail->setStreamTimeoutWait(8);
+    // $mail->Debug= FALSE; 
+    // $mail->Debugoutput= 'html'; 
+    // $mail->setEmailFrom($website_mail);
+
+    // if(!$mail->check($user_email)){ 
+    //   $path = $website . "signup.php?error=email-verify";
+    //   header("Location: " . $path);
+    //   exit();
+    // }
     else {
       // Check for unique username
       $sql = "SELECT * FROM users WHERE user_name = ? LIMIT 1";
@@ -140,6 +156,9 @@ if(isset($_POST['sign_up'])) {
       $result = $q->query($sql, $params);
     
       if($result) {
+
+        sendVerificationMail($user_email, $token);
+
         $sql = "SELECT id FROM users WHERE user_name = ?";
         $params = array($user_name);
         $result = $q->query($sql, $params);
@@ -151,7 +170,7 @@ if(isset($_POST['sign_up'])) {
         $params = array($user_id);
         $result = $q->query($sql, $params);
       
-        if($result){
+        if($result) {
           echo "<script>alert('Congratulations $user_name, your account has been created sucessfully!')</script>";
           echo "<script>window.open('". $website ."index.php?signup=success','_self')</script>";
         }
@@ -161,4 +180,32 @@ if(isset($_POST['sign_up'])) {
         echo "<script>window.open('". $website ."signup.php')</script>";
       }
     }
+}
+
+
+// Verifying user function
+function verifyUser($token) {
+  $q = new Queries();
+
+  $sql = "SELECT * FROM users WHERE token = ? LIMIT 1";
+  $params = array($token);
+  $result = $q->query($sql, $params);
+
+  $user = $q->getData($result);
+  $rowCount = $q->getRowCount($result);
+
+  if($rowCount > 0) {
+    $sql = "UPDATE users SET verified = 1 WHERE token = ?";
+    $params = array($token);
+    $result = $q->query($sql, $params);
+
+    if($result){
+      // Login user with a verified account
+      $_SESSION['user_name'] = $user['user_name'];
+      $_SESSION['user_email'] = $user['user_email'];
+      $_SESSION['user_gender'] = $user['user_gender'];
+      $_SESSION['verified'] = $user['verified'];
+      $_SESSION['user_id'] = $user['id'];
+    }
+  }
 }

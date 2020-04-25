@@ -37,7 +37,16 @@
 				</li>
 			</ul>
 
-			<form method="post" action="<?php echo $website; ?>control/contacting-controller.php">
+			<form method="post" action="<?php echo $website; ?>control/contact-controller.php">
+
+				<!-- INPUT VERIFICATION -->
+				<?php //if(isset($_GET['error'])):
+					?>
+					<!-- <div class="alert alert-danger">
+						<li class="text-danger text-center">E-mail address doesn't exist!</li>
+					</div> -->
+				<?php //endif; ?>
+
 				<div class="form-group">
 					<label>Name</label>
 						<input type="text" class="form-control" placeholder="Enter your name..." name="name" autocomplete="off" required="required">

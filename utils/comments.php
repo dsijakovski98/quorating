@@ -2,31 +2,24 @@
 
 include 'queries.php';
 
-function setComments()
+function setComments($id, $cat, $prod, $comment, $date)
 {
-        if(isset($_POST['commentSubmit']))
-        {
-            $user_id = $_POST['user_id'];
-            $date_added = $_POST['date_added'];
-            $COMMENT = $_POST['COMMENT'];
-
             $q = new Queries();
             $sql = "INSERT INTO user_comm (user_id, categorie_id, prod_id, COMMENT, r_date) 
             VALUES(:user_id, :categorie_id, :prod_id, :COMMENT, :r_date)";
-            $params = array($user_id, $catrgorie_id, $prod_id, $COMMENT, $r_date);
+            $params = array($id, $cat, $prod, $comment, $date);
             $result = $q->query($sql, $params);
-        }
 }
 
 function getComments()
 {
     $q = new Queries();
     $sql = "SELECT * FROM user_comm";
-    $params = array($user_id, $catrgorie_id, $prod_id, $COMMENT, $r_date);
+    $params = array();
     $result = $q->query($sql, $params);
     
-    $r=getData($result);
-    $row=getRowCount($r);
+    $r=$q->getData($result);
+    $row=$q->getRowCount($result);
     while($row)
     {
         echo "<div>";
@@ -34,8 +27,5 @@ function getComments()
         echo $row['date'] . "<br>";
         echo $row['COMMENT'];
         echo "</div>";
-        
     }
-    
-    
 }
