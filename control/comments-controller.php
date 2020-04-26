@@ -4,7 +4,7 @@
     require_page("utils/commentsRatings.php");
 
     if(!isset($_POST['submit-comment'])) {   
-        header("Location: /quorating/index.php");
+        echo "No No No.";
         exit();
     }
 
@@ -15,16 +15,7 @@
     $comment = $_POST['COMMENT'];
     $date_added = $_POST['date_added'];
 
-    //echo $user_id . "<br>";
-    //echo $categorie_id . "<br>";
-    //echo $product_id . "<br>";
-    //echo $comment . "<br>";
-    //echo $date_added . "<br>";
-
-    setComments($user_id,$categorie_id,$product_id,$comment,$date_added);    
-
-    if(isset($_POST['submit-comment'])) {   
-        header("Location: /quorating/index.php");
-        exit();
-    }
-
+    setComments($user_id, $categorie_id, $product_id, $comment, $date_added);    
+  
+    echo "<script>alert('You have successfully commented!');</script>";
+    echo "<script>window.open('/quorating/index.php','_self');</script>";

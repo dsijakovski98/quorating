@@ -35,7 +35,12 @@
 
 		<br>
 		<!-- GENRES -->
-		<div class="col-md-2 bg-dark rounded text-center float-left" style="margin-top:10px; margin-left:10px; height:100%;">
+		<div class="row" style="margin:0px;">
+			<div class="col-md-2 text-center" style="margin:0px; margin-left:8px;">
+				<button type="submit" class="btn btn-primary btn-lg bg-dark" name="add" style="margin:-5px;"><a href="addNew.php">Add new +</button>
+			</div>
+		</div>
+		<div class="col-md-2 bg-dark rounded text-center float-left" style="margin-top:20px; margin-left:10px; height:100%;">
 		
 		<h4 class="text-center text-info font-weight-bold" style="margin-top:8px; margin-bottom:15px; text-decoration:underline;">Search by genres</h4>
 			<?php foreach($genres as $genre): ?>
@@ -66,7 +71,6 @@
 
 			</div>
 			<?php endforeach; ?>
-			<button type="submit" class="btn btn-primary btn-lg bg-dark" name="add"><a href="addNew.php">Add new +</button>
 		</div>
 		<?php
         	require_page("utils/footer.php");

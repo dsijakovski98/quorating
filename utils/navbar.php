@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
   <img src="<?php echo $website; ?>images/Qlogo.png" width="80">
-  <a class="navbar-brand" style="margin-left:10px; user-select:none;">QuoRating</a>
+  <a class="navbar-brand" style="margin-left:10px; user-select:none; color:white;">QuoRating</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>

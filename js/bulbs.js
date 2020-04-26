@@ -6,7 +6,10 @@
 
                     $('.fa-lightbulb').on('click', function () {
                         ratedIndex = parseInt($(this).data('index'));
-                        window.open("/quorating/control/rating-control.php?rating="+ (ratedIndex+1), '_self');
+                        rating = ratedIndex + 1;
+                        
+                        $("#rating-score").val(rating);
+                        $('#ratings-form').submit();
                     });
 
                     $('.fa-lightbulb').mouseover(function () {

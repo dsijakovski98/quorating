@@ -30,7 +30,7 @@
     <form action=" " method="post" enctype="multipart/form-data">
         <table class="table table-bordered table-hover">
             <tr align="center">
-              <td colspan="6" class="active"><h2>Add new movie/book/game</h2></td>
+              <td colspan="6" class="active"><h2>Add something new</h2></td>
             </tr>
             <tr>
               <td style="font-weight: bold;">Name</td>

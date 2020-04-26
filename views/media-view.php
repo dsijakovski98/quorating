@@ -4,9 +4,9 @@ session_start();
 
 require_once '../utils/include.php';
 require_page('model/connection.php');
-require_page('utils/commentsRatings.php');
 
 date_default_timezone_set('Europe/Copenhagen');
+require_page('utils/commentsRatings.php');
 
 
 if(!isset($_POST['submit-media'])){
@@ -86,11 +86,18 @@ require_once("../control/media-view-control.php");
                         
                     <ul>
                         <li class="h5"><strong>Rating: 
-                            <div class="star-rating" style="display:inline-block;"><span style="width:80%"><?php echo $media['score']; ?>/5</strong></span></div></li>
+                            <div class="star-rating" style="display:inline-block;"><span style="width:80%"><?php echo number_format($media['score'], 1); ?>/5</strong></span></div></li>
                     </ul>
                     <?php if(isset($_SESSION['user_name'], $_SESSION['v']) && $_SESSION['v'] == 1): ?>
                     <table>
                         <tr>
+                            <form id="ratings-form" action="<?php echo $website; ?>control/rating-control.php" method="POST">
+                                <input type='hidden' name='user_id' value="<?php echo $_SESSION['user_id'];?>">
+                                <input type='hidden' name='categorie_id' value="<?php echo $categorie_id; ?>">
+                                <input type='hidden' name='prod_id' value="<?php echo $product_id; ?>">
+                                <input type='hidden' name='r_date' value="<?php echo date('Y-m-d H:i:s');?>">
+                                <input type='hidden' id="rating-score" name='rating' value="0">
+                            </form>
                             <div align="center" class="bg-dark rounded" style="padding:10px; color:black; width:150px; margin-left:20px; user-select:none;">
                                 <i class="bulb far fa-lightbulb" style="transform:scale(1.3); margin:4px; cursor:pointer;" data-index="0"></i>
                                 <i class="bulb far fa-lightbulb" style="transform:scale(1.3); margin:4px; cursor:pointer;" data-index="1"></i>
@@ -121,7 +128,7 @@ require_once("../control/media-view-control.php");
                     </div><!--col-md-6-->
                 </div>
                     <?php endif;
-                $comments = getComments(); ?>
+                $comments = getComments($categorie_id, $product_id); ?>
                 <div class="container">
                         <h2><?php echo count($comments); ?> Comment(s)</h2>
                         <br><br>
@@ -142,7 +149,7 @@ require_once("../control/media-view-control.php");
                 <?php endforeach; 
                         endif;?>
                 <script src="http://code.jquery.com/jquery-3.4.0.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
-                <script src="<?php echo $website; ?>js/bulbs.js"></script>
+                <script src="<?php echo $website; ?>js/bulbs.js?<?php echo mt_rand();?>"></script>
             </div><!--Row--> 
         </div><!--Content--> 
     </div><!--Container-->

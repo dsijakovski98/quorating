@@ -2,6 +2,8 @@
 
 include '../model/queries.php';
 
+
+// COMMENTS PART
 function setComments($user_id, $categorie_id, $prod_id, $comment, $date_added)
 {
             $q = new Queries();
@@ -11,11 +13,11 @@ function setComments($user_id, $categorie_id, $prod_id, $comment, $date_added)
             $result = $q->query($sql, $params);
 }
 
-function getComments()
+function getComments($categorie_id, $prod_id)
 {
     $q = new Queries();
-    $sql = "SELECT * FROM user_comm";
-    $params = array();
+    $sql = "SELECT * FROM user_comm WHERE categorie_id = ? AND prod_id = ?";
+    $params = array($categorie_id, $prod_id);
     $result = $q->query($sql, $params);
     
     $comms=$q->getAllData($result);
@@ -52,11 +54,55 @@ function getComments()
     return $comments;
 }
 
+
+
+
+// RATINGS PART
 function setRatings($user_id, $categorie_id, $prod_id, $rating, $r_date)
 {
-            $q = new Queries();
-            $sql = "INSERT INTO user_rate (user_id, categorie_id, prod_id, rating, r_date) 
-            VALUES(?, ?, ?, ?, ?)";
-            $params = array($user_id, $categorie_id, $prod_id, $rating, $r_date);
-            $result = $q->query($sql, $params);
+    $q = new Queries();
+    $sql = "INSERT INTO user_rate (user_id, categorie_id, prod_id, rating, r_date) 
+    VALUES(?, ?, ?, ?, ?)";
+    $params = array($user_id, $categorie_id, $prod_id, $rating, $r_date);
+    $result = $q->query($sql, $params);
+
+    // Update the media score
+
+
+    // Find out the table name
+    $table_name = "";
+    switch($categorie_id) {
+        case '1':
+            $table_name = "movies";
+            break;
+        case '2':
+            $table_name = "books";
+            break;
+        case '3':
+            $table_name = "games";
+            break;
+    }
+
+    // Get the rating
+    $sql = "SELECT AVG(user_rate.rating) AS rating
+            FROM {$table_name}
+            LEFT JOIN user_rate
+    ON {$table_name}.id = user_rate.prod_id
+    WHERE user_rate.categorie_id = {$categorie_id} AND user_rate.prod_id = {$prod_id}
+    GROUP BY {$table_name}.id"; 
+    $params=array();
+
+    $result = $q->query($sql, $params);
+    $data = $q->getData($result);
+
+    $score = $data['rating'];
+
+    // Update the product's score
+    $sql = "UPDATE {$table_name} SET score = ? WHERE id = {$prod_id}";
+    $params = array($score);
+
+    $result = $q->query($sql, $params);
+
+
+    return $result;
 }
