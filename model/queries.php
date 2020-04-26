@@ -23,4 +23,8 @@ class Queries extends Connection{
     public function getData($result) {
         return $result->fetch();
     }
+
+    public function getAllData($result) {
+        return $result->fetchAll();
+    }
 }

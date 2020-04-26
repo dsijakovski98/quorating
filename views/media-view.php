@@ -118,18 +118,29 @@ require_once("../control/media-view-control.php");
                         </form>
                         <br>
                         <!-- Display total number of comments on this post  -->
-                        <h2><span id="comments_count">0</span> Comment(s)</h2>
-                        <hr>
-
-                        <!-- DISPLAYING ALL COMMENTS -->
-                        <?php getComments(); ?>
                     </div><!--col-md-6-->
-                    <br>
-                    <br>
-
-                    <?php endif; ?>
                 </div>
-
+                    <?php endif;
+                $comments = getComments(); ?>
+                <div class="container">
+                        <h2><?php echo count($comments); ?> Comment(s)</h2>
+                        <br><br>
+                </div>
+                <!-- DISPLAYING ALL COMMENTS -->
+                <?php if($comments):
+                        foreach($comments as $comment): ?>
+                <div class="row">
+                        <div class="card" style="width:40rem; margin-bottom:10px">
+                            <div class="card-body">
+                                <img class="float-left rounded" src="<?php echo $website . "images/ProfilePics/" . $comment['user_name'] . '.' . $comment['extension']; ?>" width="60" style="margin-right:20px;">
+                                <h5 class="card-title"><?php echo $comment['user_name']; ?></h5>
+                                <h6 class="card-subtitle mb-2 text-muted"><?php echo $comment['date_added']; ?></h6>
+                                <p class="card-text"><?php echo $comment['comment']; ?></p>
+                            </div>
+                        </div>
+                </div>
+                <?php endforeach; 
+                        endif;?>
                 <script src="http://code.jquery.com/jquery-3.4.0.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
                 <script src="<?php echo $website; ?>js/bulbs.js"></script>
             </div><!--Row--> 
