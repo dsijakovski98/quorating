@@ -43,7 +43,9 @@
 			<br>
 			<?php endforeach; ?>
 			<br>
+			
 		</div>
+		
 		
 		<div class="container col-md-10 offset-md-2">
 			<?php foreach ($data as $row): ?>
@@ -64,6 +66,7 @@
 
 			</div>
 			<?php endforeach; ?>
+			<button type="submit" class="btn btn-primary btn-lg bg-dark" name="add"><a href="addNew.php">Add new +</button>
 		</div>
 		<?php
         	require_page("utils/footer.php");

@@ -1,11 +1,13 @@
   <!DOCTYPE html>
 <?php
   require_once '../utils/include.php';
-    require_once '../model/get_user.php';
+  require_once '../model/get_user.php';
+
+  require_page("utils/navbar.php");
    
-    if(empty($user_info)){
-        header("Location: ../signin.php");
-    }
+  if(empty($user_info)){
+    header("Location: ../signin.php");
+  }
     else { ?>
 <html>
 <head>
@@ -91,4 +93,6 @@
 </div>
 </body>
 </html>
-<?php } ?>
+<?php } 
+require_page("utils/footer.php");
+?>

@@ -2,12 +2,12 @@
 
 include '../model/queries.php';
 
-function setComments($id, $cat, $prod, $comment, $date)
+function setComments($user_id, $categorie_id, $prod_id, $comment, $date_added)
 {
             $q = new Queries();
-            $sql = "INSERT INTO user_comm (user_id, categorie_id, prod_id, COMMENT, r_date) 
-            VALUES(:user_id, :categorie_id, :prod_id, :COMMENT, :r_date)";
-            $params = array($id, $cat, $prod, $comment, $date);
+            $sql = "INSERT INTO user_comm (user_id, categorie_id, prod_id, comment, date_added) 
+            VALUES(?, ?, ?, ?, ?)";
+            $params = array($user_id, $categorie_id, $prod_id, $comment, $date_added);
             $result = $q->query($sql, $params);
 }
 
@@ -50,4 +50,13 @@ function getComments()
 
 
     return $comments;
+}
+
+function setRatings($user_id, $categorie_id, $prod_id, $rating, $r_date)
+{
+            $q = new Queries();
+            $sql = "INSERT INTO user_rate (user_id, categorie_id, prod_id, rating, r_date) 
+            VALUES(?, ?, ?, ?, ?)";
+            $params = array($user_id, $categorie_id, $prod_id, $rating, $r_date);
+            $result = $q->query($sql, $params);
 }

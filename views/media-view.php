@@ -4,7 +4,7 @@ session_start();
 
 require_once '../utils/include.php';
 require_page('model/connection.php');
-require_page('utils/comments.php');
+require_page('utils/commentsRatings.php');
 
 date_default_timezone_set('Europe/Copenhagen');
 
@@ -113,8 +113,8 @@ require_once("../control/media-view-control.php");
                             <input type='hidden' name='categorie_id' value="<?php echo $categorie_id; ?>">
                             <input type='hidden' name='product_id' value="<?php echo $product_id; ?>">
                             <input type='hidden' name='date_added' value="<?php echo date('Y-m-d H:i:s');?>">
-                            <textarea name='COMMENT'cols='50' rows='4'></textarea><br>
-                            <button class='btn btn-primary btn-sm pull-right' name='submit-comment'>Comment</button>
+                            <textarea name='COMMENT'cols='50' rows='4' value="<?php echo $comment;?>"></textarea><br>
+                            <button type="submit" class="btn btn-primary btn-lg bg-dark" name="submit-comment">Comment</button>
                         </form>
                         <br>
                         <!-- Display total number of comments on this post  -->
