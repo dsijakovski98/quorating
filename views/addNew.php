@@ -57,25 +57,40 @@
             </tr>
             
             <tr>
-              <td style="font-weight: bold;">Category</td>
+              <td style="font-weight: bold;">Category (select 1-Movie, 2-Book, 3-Game)</td>
               <td>
               <select class="form-control" name="category">
-                <option>Movie</option>
-                <option>Book</option>
-                <option>Game</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
               </select>
               </td>
             </tr>
+
+            <tr>
+              <td style="font-weight: bold;">Genre</td>
+              <td>
+              <input class="form-control" name="genre" required="required"/> 
+              </td>
+            </tr>
+
+            <tr>
+              <td style="font-weight: bold;">Description</td>
+              <td>
+              <input class="form-control" name="description" required="required"/> 
+              </td>
+            </tr>
+
             <tr>
               <td style="font-weight: bold;">Date</td>
               <td>
-              <input type="date" class="form-control" name="date" required="required"/>
+              <input type="date" class="form-control" name="date_added" required="required"/>
               </td>
             </tr>
 
             <tr align="center">
               <td colspan="6">
-              <input class="btn btn-info" style="width: 250px;" type="submit" name="add" value="ADD"/>
+              <button type="submit" class="btn btn-info" name="add" style="width: 250px;" style="margin:-5px;">Add new +</button>
               </td>
             </tr>
           </table>
