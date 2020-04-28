@@ -8,7 +8,9 @@
     }
 		$categorie = $_GET['c'];
 		require '../utils/include.php';
-        require_once '../control/media-list-control.php';
+		require_once '../control/media-list-control.php';
+		
+		$media_type = lcfirst(substr($media, 0, -1));
 ?>
 <!DOCTYPE html>
 
@@ -37,7 +39,7 @@
 		<!-- GENRES -->
 		<div class="row" style="margin:0px;">
 			<div class="col-md-2 text-center" style="margin:0px; margin-left:8px;">
-				<button type="submit" class="btn btn-primary btn-lg bg-dark" name="add" style="margin:-5px;"><a href="addNew.php">Add new +</button>
+				<button type="submit" class="btn btn-primary btn-lg bg-dark" name="add" style="margin:-5px;"><a href="addNew.php?c=<?php echo $categorie; ?>">Add new <?php echo $media_type; ?></button>
 			</div>
 		</div>
 		<div class="col-md-2 bg-dark rounded text-center float-left" style="margin-top:20px; margin-left:10px; height:100%;">
