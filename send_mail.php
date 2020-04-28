@@ -1,7 +1,7 @@
 <?php
     require_once 'PHPMailer/PHPMailerAutoload.php';
 
-    function send_mail(string $to, string $subject, string$body, $from = "", $name = "User", $multiple_users = 0){
+    function send_mail(string $to, string $subject, string $body, $from = "", $name = "User", $multiple_users = 0){
         $mail = new PHPMailer();
 
         $mail ->IsSmtp();

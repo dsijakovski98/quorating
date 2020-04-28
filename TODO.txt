@@ -57,7 +57,7 @@ OPTIONAL:
 * Add account verification mailing [x]
 * Add account verification mechanism [x]
  
-* Add password recovery mechanism []
+* Add password recovery mechanism [x]
 * Fix profile picture uploading:
 	- Delete existing picture [x]
 
@@ -70,3 +70,9 @@ OPTIONAL:
 
 * Rating system [x]
 * Commenting system [x]
+
+
+>>> 29/04/2019
+* Add thumbnails to media files []
+* Add comments editing mechanism [] ?
+* Add comments removal mechanism [] ?

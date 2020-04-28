@@ -1,5 +1,10 @@
 <?php
 	require_once '../utils/include.php';
+
+	if(!isset($SESSION['user_name'])){
+		header("Location: ../index.php");
+		exit();
+	}
 ?>
 
 <!DOCTYPE html>
