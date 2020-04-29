@@ -54,7 +54,7 @@ function getComments($categorie_id, $prod_id)
     return $comments;
 }
 
-function deleteComments($user_id, $categorie_id, $prod_id, $comment, $date_added)
+function deleteComments($user_id)
 {
             $q = new Queries();
             $sql = "DELETE FROM user_comm WHERE user_id=:user_id";

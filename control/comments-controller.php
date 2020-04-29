@@ -25,7 +25,7 @@
         exit();
     }
 
-    deleteComments($user_id, $categorie_id, $product_id, $comment, $date_added);
-    echo "<script>alert('You have successfully commented!');</script>";
+    deleteComments($user_id);
+    echo "<script>alert('You have deleted commented!');</script>";
     echo "<script>window.open('/quorating/index.php','_self');</script>";
 

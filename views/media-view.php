@@ -155,6 +155,7 @@ require_once("../control/media-view-control.php");
                                 <h5 class="card-title"><?php echo $comment['user_name']; ?></h5>
                                 <h6 class="card-subtitle mb-2 text-muted"><?php echo $comment['date_added']; ?></h6>
                                 <p class="card-text"><?php echo $comment['comment']; ?></p>
+                                <button name="delete-comment">Delete<button>
                             </div>
                         </div>
                 </div>
