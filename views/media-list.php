@@ -49,8 +49,11 @@
 		<div class="col-md-2 bg-dark rounded text-center float-left" style="margin-top:20px; margin-left:10px; height:100%;">
 		
 		<h4 class="text-center text-info font-weight-bold" style="margin-top:8px; margin-bottom:15px; text-decoration:underline;">Search by genres</h4>
-			<?php foreach($genres as $genre): ?>
-			<a class="btn text-light font-weight-bold" style="font-size:1.5em; margin:5px;" href="#"><?php echo $genre;?></a>
+			<?php
+				foreach($genres as $genre):
+					$href = $website . "views/media-list.php?c=" . $categorie . "&g=" . $genre;
+			?>
+			<a class="btn text-light font-weight-bold" style="font-size:1.5em; margin:5px;" href="<?php echo $href; ?>"><?php echo $genre;?></a>
 			<br>
 			<?php endforeach; ?>
 			<br>
@@ -60,6 +63,21 @@
 		
 		<div class="container col-md-11 offset-md-2">
 			<?php foreach ($data as $row):
+
+				// var_dump($row);
+				if(isset($_GET['g'])){
+					$filter_genre = strtolower($_GET['g']);
+					$media_genre = explode(', ', $row['genre']);
+					$genre_check = false;
+					foreach($media_genre as $genre_) {
+						if($filter_genre == strtolower($genre_)){
+							$genre_check = true;
+						}
+					}
+					if(!$genre_check){
+						continue;
+					}
+				}
 				$picture_name = getPictureName($categorie, $row['id']);
 				$picturePath = $website . "images/media/$media_type"."s/$picture_name";
 				// echo $picturePath;

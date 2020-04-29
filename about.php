@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	require_once 'utils/include.php';
 ?>
 
@@ -13,14 +14,11 @@
 		require_page("utils/bootstrap.php");
 	?>
 </head>
-<style>
-img {border-radius:50%}
-</style>
 <body>
 <?php
 	require_page("utils/navbar.php");
 ?>
-
+<br>
 <main class="main-content">
 				<div class="container">
 					<div class="page">
@@ -28,7 +26,7 @@ img {border-radius:50%}
 
 						<div class="row">
 							<div class="col-md-4">
-								<figure><img src="<?php echo $website; ?>images/Qlogo.png" alt="figure image"  height="300" width="300"></figure>
+								<figure><img  style="border-radius:50%;" src="<?php echo $website; ?>images/Qlogo.png" alt="figure image"  height="300" width="300"></figure>
 							</div>
 							<div class="col-md-8">
 								<p class="leading">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam.</p>
@@ -50,16 +48,16 @@ img {border-radius:50%}
 
 							<div class="col-md-3">
 								<div class="team">
-									<figure class="team-image"><img src="<?php echo $website; ?>images/" alt="" height="100" width="100"></figure>
-									<h2 class="team-name">Daniel Shijakovski</h2>
+									<figure class="team-image"><img class="img rounded-circle" src="<?php echo $website; ?>images/daniel.jpg" alt="" height="100" width="100"></figure>
+									<h4 class="team-name">Даниел Шијаковски</h4>
 									<small class="team-title">Founder</small>
 								</div>
 							</div>
 
 							<div class="col-md-3">
 								<div class="team">
-								<figure class="team-image"><img src="<?php echo $website; ?>images/tea.jpg" alt="" height="100" width="100"></figure>
-									<h2 class="team-name">Teodora Jovcheska</h2>
+								<figure class="team-image"><img class="img rounded-circle" src="<?php echo $website; ?>images/tea.jpg" alt="" height="100" width="100"></figure>
+									<h4 class="team-name">Теодора Јовческа</h4>
 									<small class="team-title">Founder</small>
 								</div>
 							</div>
