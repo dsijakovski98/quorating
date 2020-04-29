@@ -72,7 +72,9 @@ OPTIONAL:
 * Commenting system [x]
 
 
->>> 29/04/2019
-* Add thumbnails to media files []
+>>> 29/04/2019 - 30/04/2019
+* Add thumbnails to media files [x]
 * Add comments editing mechanism [] ?
 * Add comments removal mechanism [] ?
+* Setup genre buttons to filter media []
+* Send media add notifications to admins []

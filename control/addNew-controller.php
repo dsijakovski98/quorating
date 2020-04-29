@@ -97,7 +97,7 @@
         }
 
         // Insert into media_images table
-        $sql = "INSERT INTO media_images (id, category, pic_name, ext, hasPicture) VALUES (?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO media_images (prod_id, category, pic_name, ext, hasPicture) VALUES (?, ?, ?, ?, ?)";
         $params = array($media_id, $category, $picture_name, $extension, $hasPicture);
 
         $result = $q->query($sql, $params);
@@ -108,19 +108,3 @@
         }
     }
     
-
-
-    // if($fileSize < 1000000) {
-
-    //     move_uploaded_file($fileTmpName, $fileDestination);
-    //     $_SESSION['ext'] = $fileActualExt;
-    //     // UPDATE IMAGES TABLE
-    //     $sql = "UPDATE images SET hasPicture = 1 WHERE id = ?";
-    //     $params = array($user_info['user_id']);
-    //     $result = $q->query($sql, $params);
-
-    //     echo "
-    //         <script>alert('You have successfully uploaded a profile picture!')</script>
-    //         <script>window.open('/quorating/index.php','_self')</script>
-    //     ";
-    // }

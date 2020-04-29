@@ -11,6 +11,8 @@
 		require_once '../control/media-list-control.php';
 		
 		$media_type = lcfirst(substr($media, 0, -1));
+
+
 ?>
 <!DOCTYPE html>
 
@@ -54,13 +56,19 @@
 		</div>
 		
 		
-		<div class="container col-md-10 offset-md-2">
-			<?php foreach ($data as $row): ?>
-			<div class="card" style="margin:1%; width:20rem; display:inline-block;">
-				<img class="rounded img-fluid" src="<?php echo $website; ?>images/popcorn.jpg">
+		<div class="container col-md-11 offset-md-2">
+			<?php foreach ($data as $row):
+				$picture_name = getPictureName($categorie, $row['id']);
+				$picturePath = $website . "images/media/$media_type"."s/$picture_name";
+				// echo $picturePath;
+				// echo $picture_name;
+			?>
+			<div class="card" style="margin:1%; width:20rem; display:inline-block; vertical-align:top;">
+				<img class="rounded" src="<?php echo $picturePath; ?>" width="100%" height="390px">
 				<div class="card-body">
-					<h3 class="card-title text-dark"><?php echo $row['name']; ?></h3>
-					<p class="card-text text-left text-dark">
+					<h3 class="card-title text-dark" style="height:30px; font-size:4vh;"><?php echo $row['name']; ?></h3>
+					<br>
+					<p class="card-text text-left text-dark"">
 						<?php echo substr($row['description'], 0, 60) . "...";?>
 					</p>
 					<form action="<?php echo $website; ?>views/media-view.php" method="POST">

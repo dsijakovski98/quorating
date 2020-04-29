@@ -50,7 +50,12 @@ require_once("../control/media-view-control.php");
         <div class="content" >
             <div class="row">
                 <div class="col-md-6">
-                    <figure><img class="img-fluid rounded" src="<?php echo $website; ?>images/popcorn.jpg" alt="#" width="550px;"></figure>
+                    <?php
+                        $picture_name = getPictureName($categorie_id, $product_id);
+                        $picturePath = $website . "images/media/$table/$picture_name";
+                        // echo $picturePath;
+                     ?>
+                    <figure><img class="rounded" src="<?php echo $picturePath; ?>" alt="#" width="100%;" height="550px;"></figure>
                 </div>
                     
                 <div class="col-md-6">
@@ -109,7 +114,9 @@ require_once("../control/media-view-control.php");
                         <br>
                         
                     </table>
-                    
+                
+                
+
                     <!-- COMMENTS SECTION -->
                     <div class="col-md-6 ">
 
@@ -126,12 +133,17 @@ require_once("../control/media-view-control.php");
                         <br>
                         <!-- Display total number of comments on this post  -->
                     </div><!--col-md-6-->
+                    </div>
+                    <?php 
+                        endif;
+                        $comments = getComments($categorie_id, $product_id); 
+                    ?>
+
                 </div>
-                    <?php endif;
-                $comments = getComments($categorie_id, $product_id); ?>
+                <div class="row" style="margin-top:20px;">
                 <div class="container">
-                        <h2><?php echo count($comments); ?> Comment(s)</h2>
-                        <br><br>
+                        <h2 class="text-left"><?php echo count($comments); ?> Comment(s)</h2>
+                        <br>
                 </div>
                 <!-- DISPLAYING ALL COMMENTS -->
                 <?php if($comments):
@@ -148,9 +160,10 @@ require_once("../control/media-view-control.php");
                 </div>
                 <?php endforeach; 
                         endif;?>
+            </div>
                 <script src="http://code.jquery.com/jquery-3.4.0.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
                 <script src="<?php echo $website; ?>js/bulbs.js?<?php echo mt_rand();?>"></script>
-            </div><!--Row--> 
+             
         </div><!--Content--> 
     </div><!--Container-->
 

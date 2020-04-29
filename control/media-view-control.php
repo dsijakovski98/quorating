@@ -18,3 +18,19 @@ $media = $result->fetch();
 
 
 
+function getPictureName($categorie_id, $prod_id) {
+    global $q;
+
+    $picture_name = "";
+
+    $sql = "SELECT pic_name, ext FROM media_images WHERE category = ? AND prod_id = ? LIMIT 1";
+    $params = array($categorie_id, $prod_id);
+    $result = $q->query($sql, $params);
+
+    $data = $q->getData($result);
+    if($data){
+        $picture_name = $data['pic_name'] . "." . $data['ext'];
+    }
+
+    return $picture_name;
+}
