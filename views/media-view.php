@@ -155,7 +155,16 @@ require_once("../control/media-view-control.php");
                                 <h5 class="card-title"><?php echo $comment['user_name']; ?></h5>
                                 <h6 class="card-subtitle mb-2 text-muted"><?php echo $comment['date_added']; ?></h6>
                                 <p class="card-text"><?php echo $comment['comment']; ?></p>
-                                <button name="delete-comment">Delete<button>
+                                <?php if(isset($_SESSION['user_name']) && $comment['user_name'] == $_SESSION['user_name']): ?>
+                                <form action="<?php echo $website;?>control/comments-controller.php" method="POST">
+                                    <input type="hidden" name='user_id' value="<?php echo $comment['user_id'];?>">
+                                    <input type="hidden" name="categorie_id" value="<?php echo $comment['categorie_id'];?>">
+                                    <input type="hidden" name="prod_id" value="<?php echo $comment['prod_id'];?>">
+                                    <input type="hidden" name="comment" value="<?php echo $comment['comment'];?>">
+                                    <input type="hidden" name="date" value="<?php echo $comment['date_added']; ?>">
+                                    <button type="submit" name="delete-comment">Delete</button>
+                                </form>
+                                <?php endif; ?>
                             </div>
                         </div>
                 </div>

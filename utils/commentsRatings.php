@@ -54,12 +54,14 @@ function getComments($categorie_id, $prod_id)
     return $comments;
 }
 
-function deleteComments($user_id)
+function deleteComments($user_id, $date_added)
 {
             $q = new Queries();
-            $sql = "DELETE FROM user_comm WHERE user_id=:user_id";
-            $params = array($user_id);
+            $sql = "DELETE FROM user_comm WHERE user_id = ? AND date_added = ?";
+            $params = array($user_id, $date_added);
             $result = $q->query($sql, $params);
+
+            return $result;
 }
 
 

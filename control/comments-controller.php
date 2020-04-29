@@ -3,29 +3,46 @@
     require_once '../utils/include.php';
     require_page("utils/commentsRatings.php");
 
-    if(!isset($_POST['submit-comment'])) {   
-        echo "No No No.";
-        exit();
+    if(isset($_POST['submit-comment'])) { 
+
+        $user_id = $_POST['user_id'];
+        $categorie_id = $_POST['categorie_id'];
+        $product_id = $_POST['product_id'];
+        $comment = $_POST['COMMENT'];
+        $date_added = $_POST['date_added'];
+
+        setComments($user_id, $categorie_id, $product_id, $comment, $date_added);    
+    
+        echo "<script>alert('You have successfully commented!');</script>";
+        echo "<script>window.open('/quorating/index.php','_self');</script>";
     }
 
 
-    $user_id = $_POST['user_id'];
-    $categorie_id = $_POST['categorie_id'];
-    $product_id = $_POST['product_id'];
-    $comment = $_POST['COMMENT'];
-    $date_added = $_POST['date_added'];
+    if(isset($_POST['delete-comment'])) {   
+        $user_id = $_POST['user_id'];
+        $categorie_id = $_POST['categorie_id'];
+        $product_id = $_POST['prod_id'];
+        $comment = $_POST['comment'];
+        $date_added = $_POST['date'];
 
-    setComments($user_id, $categorie_id, $product_id, $comment, $date_added);    
-  
-    echo "<script>alert('You have successfully commented!');</script>";
-    echo "<script>window.open('/quorating/index.php','_self');</script>";
+        // echo "User id: " . $user_id . "<br>";
+        $date = date_create($date_added);
+        // echo "timestamp: " . date_format($date,"Y-m-d H:i:s") . "<br>";
 
-    if(!isset($_POST['delete-comment'])) {   
-        echo "No No No.";
-        exit();
+        $actual_date = date_format($date, "Y-m-d H:i:s");
+        
+        // exit();
+
+        $result = deleteComments($user_id, $actual_date);
+    
+        if($result){
+            echo "<script>alert('You have deleted the comment!');</script>";
+        }
+        else {
+            echo "There has been an error while deleting the comment";
+        }
+        echo "<script>window.open('/quorating/index.php','_self');</script>";
     }
 
-    deleteComments($user_id);
-    echo "<script>alert('You have deleted commented!');</script>";
-    echo "<script>window.open('/quorating/index.php','_self');</script>";
+
 
