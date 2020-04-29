@@ -39,11 +39,13 @@
 
 		<br>
 		<!-- GENRES -->
+		<?php if(isset($_SESSION['user_name'], $_SESSION['v']) && $_SESSION['v'] == 1): ?>
 		<div class="row" style="margin:0px;">
 			<div class="col-md-2 text-center" style="margin:0px; margin-left:8px;">
 				<button type="submit" class="btn btn-primary btn-lg bg-dark" name="add" style="margin:-5px;"><a href="addNew.php?c=<?php echo $categorie; ?>">Add new <?php echo $media_type; ?></button>
 			</div>
 		</div>
+		<?php endif; ?>
 		<div class="col-md-2 bg-dark rounded text-center float-left" style="margin-top:20px; margin-left:10px; height:100%;">
 		
 		<h4 class="text-center text-info font-weight-bold" style="margin-top:8px; margin-bottom:15px; text-decoration:underline;">Search by genres</h4>

@@ -19,3 +19,13 @@
   
     echo "<script>alert('You have successfully commented!');</script>";
     echo "<script>window.open('/quorating/index.php','_self');</script>";
+
+    if(!isset($_POST['delete-comment'])) {   
+        echo "No No No.";
+        exit();
+    }
+
+    deleteComments($user_id, $categorie_id, $product_id, $comment, $date_added);
+    echo "<script>alert('You have successfully commented!');</script>";
+    echo "<script>window.open('/quorating/index.php','_self');</script>";
+
