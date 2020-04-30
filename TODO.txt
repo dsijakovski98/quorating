@@ -83,5 +83,5 @@ OPTIONAL:
 	- Set session variable 'admin' on sign in if its the admin [x]
 	- Update navbar code to show notifications on admins [x]
 	- Show only confirmed media files [x]
-	- Create a pop up window to confirm/deny request
+	- Create a pop up window to confirm/deny request [x]
 	- Insert/Delete media with admin permission []

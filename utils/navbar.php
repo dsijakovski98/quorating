@@ -62,21 +62,15 @@
               </a>
               <div class="dropdown-menu" aria-labelledby="notification-dropdown">
 
-              <?php if(count($requests) > 0): ?>
-                <?php foreach($requests as $request):
+              <?php if(count($requests) <= 0): ?>
+                <a href="#" class="dropdown-item">
+                      No new requests at this time!
+                  </a>
+              <?php else:
+                  $i = 0; 
+                  foreach($requests as $request):
 
-                    $media_type = "";
-                    switch($request['cat_id']) {
-                      case '1':
-                        $media_type = "movies";
-                        break;
-                      case '2':
-                        $media_type = "books";
-                        break;
-                      case '3':
-                        $media_type = "games";
-                        break;
-                    }
+                    $media_type = getMediaType($requests['cat_id']);
 
                     $request_data = getRequestData($request, $media_type);
 
@@ -88,25 +82,59 @@
 
                     // TODO: MAKE THIS LINK OPEN A POP UP WINDOW TO CONFIRM OR DENY COMMENT
                     $link = "";
+
+                    $i++;
                   ?>
-                  <a href="<?php echo $link; ?>" class="dropdown-item">
-                    <small><i><?php echo $request_date; ?></i></small>
-                    <br>
-                    New <b><?php echo $media_type;?></b> entry request!
-                    <br>
-                    <?php echo ucfirst($media_type) . ": " . $request_data['name'];?>
-                  </a>
+                  <button  type="button" class="dropdown-item" data-toggle="modal" data-target="#exampleModal<?php echo $i; ?>">
+                    <!-- <a href="" class="dropdown-item"> -->
+                      <small><i><?php echo $request_date; ?></i></small>
+                      <br>
+                      New <b><?php echo $media_type;?></b> entry request!
+                      <br>
+                      <?php echo ucfirst($media_type) . ": " . $request_data['name'];?>
+                    <!-- </a> -->
+                  </button>
+
                   <div class="dropdown-divider"></div>
                 <?php endforeach; ?>
-                  <?php else : ?>
-                    <a href="#" class="dropdown-item">
-                      No new requests at this time!
-                  </a>
-                  <?php endif; ?>
               </div>
             </li>
+                  <?php endif; ?>
               <?php endif; ?>
               
+              <?php $i = 0;
+              foreach($requests as $request):
+
+                $media_type = getMediaType($requests['cat_id']);
+                $request_data = getRequestData($request, $media_type);
+
+                $i++;
+
+              ?>
+                <div class="modal fade" id="exampleModal<?php echo $i; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel"><?php echo substr(ucfirst($media_type), 0, -1) . " Request"; ?></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                       <?php var_dump($request_data); ?>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+
+              <?php endforeach; ?>
+
             <img class="rounded-circle" style="margin-top:5px;" src="<?php echo $website; ?>images/profilePics/<?php echo $picName;?>.<?php echo "$fileExt?" . mt_rand();?>" width="60" height="65">
             
             <li class="nav-item">
@@ -129,3 +157,5 @@
     </div>
   </div>
 </nav>
+
+

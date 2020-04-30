@@ -27,3 +27,21 @@ function getRequestData($request, $table_name) {
 
   return $data;
 }
+
+
+function getMediaType($cat_id) {
+  $media_type = "";
+  switch($cat_id) {
+    case '1':
+      $media_type = "movies";
+      break;
+    case '2':
+      $media_type = "books";
+      break;
+    case '3':
+      $media_type = "games";
+      break;
+  }
+
+  return $media_type;
+}
