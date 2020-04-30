@@ -164,6 +164,47 @@ require_once("../control/media-view-control.php");
                                     <input type="hidden" name="date" value="<?php echo $comment['date_added']; ?>">
                                     <button type="submit" name="delete-comment">Delete</button>
                                 </form>
+                                <form method="POST">    
+                                    <input type="hidden" name='user_id' value="<?php echo $comment['user_id'];?>">
+                                    <input type="hidden" name="categorie_id" value="<?php echo $comment['categorie_id'];?>">
+                                    <input type="hidden" name="prod_id" value="<?php echo $comment['prod_id'];?>">
+                                    <input type="hidden" name="comment" value="<?php echo $comment['comment'];?>">
+                                    <input type="hidden" name="date" value="<?php echo $comment['date_added']; ?>">
+                                    <button type = "submit" data-toggle = "modal" data-target = "#myModal">Edit</button>
+                                    <div class = "modal fade" id = "myModal" tabindex = "-1" role = "dialog" 
+                                    aria-labelledby = "myModalLabel" aria-hidden = "true">
+                                    <div class = "modal-dialog">
+                                        <div class = "modal-content">
+                                            
+                                            <div class = "modal-header">
+                                                <button type = "button" class = "close" data-dismiss = "modal" aria-hidden = "true">&times;
+                                                </button>
+                                                
+                                                <h4 class = "modal-title" id = "myModalLabel">
+                                                Edit comment
+                                                </h4>
+                                            </div>
+                                            
+                                            <div class = "modal-body">
+                                            <textarea rows="4" cols="50"<?php var_dump($comments);?></textarea>
+                                            </div>
+                                            
+                                            <div class = "modal-footer">
+                                                <button type = "button" class = "btn btn-default" data-dismiss = "modal">
+                                                Close
+                                                </button>
+                                                
+                                                <button type = "button" class = "btn btn-primary" name="submit-changes">
+                                                Submit changes
+                                                </button>
+                                            </div>
+                                            
+                                        </div><!-- /.modal-content -->
+                                    </div><!-- /.modal-dialog -->
+                                    
+                                    </div><!-- /.modal -->
+                                                                        
+                                </form>
                                 <?php endif; ?>
                             </div>
                         </div>

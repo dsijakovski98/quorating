@@ -5,6 +5,7 @@
     
     // Run this function to include any file as if from the root folder
     require_page("control/authentication_controller.php");
+    require_page("utils/secure_conn.php");
 
     if(isset($_GET['token'])){
         $token = $_GET['token'];
