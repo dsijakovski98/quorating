@@ -70,7 +70,7 @@
                   $i = 0; 
                   foreach($requests as $request):
 
-                    $media_type = getMediaType($requests['cat_id']);
+                    $media_type = getMediaType($request['cat_id']);
 
                     $request_data = getRequestData($request, $media_type);
 
@@ -105,7 +105,7 @@
               <?php $i = 0;
               foreach($requests as $request):
 
-                $media_type = getMediaType($requests['cat_id']);
+                $media_type = getMediaType($request['cat_id']);
                 $request_data = getRequestData($request, $media_type);
 
                 $i++;
