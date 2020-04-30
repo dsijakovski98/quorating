@@ -44,6 +44,9 @@ if(isset($_POST['sign_in'])) {
         $_SESSION['user_gender'] = $row['user_gender'];
         $_SESSION['verified'] = $row['verified'];
         $_SESSION['user_id'] = $row['id'];
+        if($row['admin'] == 1) {
+          $_SESSION['admin'] = 1;
+        }
 
         $sql = "SELECT hasPicture, extension FROM images WHERE id = ?";
         $params = array($row['id']);

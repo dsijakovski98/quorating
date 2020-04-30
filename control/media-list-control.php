@@ -27,7 +27,7 @@ $table_name = lcfirst($media);
 
 
 
-$sql = "SELECT id, name, description, genre FROM $table_name";
+$sql = "SELECT id, name, description, genre, confirmed FROM $table_name";
 $params = array();
 
 $result = $q->query($sql, $params);
@@ -37,6 +37,9 @@ $data = $result->fetchAll();
 $genres = array();
 
 foreach($data as $row) {
+    if($row['confirmed'] == 0) {
+        continue;
+    }
     $movie_genres = explode(',', $row['genre']);
     foreach($movie_genres as $genre) {
         if(in_array(ucfirst(ltrim($genre)), $genres) == false){

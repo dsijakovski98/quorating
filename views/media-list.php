@@ -64,6 +64,10 @@
 		<div class="container col-md-11 offset-md-2">
 			<?php foreach ($data as $row):
 
+				if($row['confirmed'] == 0) {
+					continue;
+				}
+
 				// var_dump($row);
 				if(isset($_GET['g'])){
 					$filter_genre = strtolower($_GET['g']);
@@ -84,7 +88,7 @@
 				// echo $picture_name;
 			?>
 			<div class="card" style="margin:1%; width:20rem; display:inline-block; vertical-align:top;">
-				<img class="rounded" src="<?php echo $picturePath; ?>" width="100%" height="390px">
+				<img class="rounded" src="<?php echo $picturePath . "?" . mt_rand(); ?>" width="100%" height="390px">
 				<div class="card-body">
 					<h3 class="card-title text-dark" style="height:30px; font-size:4vh;"><?php echo $row['name']; ?></h3>
 					<br>

@@ -1,5 +1,7 @@
 <?php
 
+    session_start();
+
     require_once '../utils/include.php';
     require_once '../model/queries.php';
 
@@ -20,10 +22,12 @@
 
     $q = new Queries();
 
+    $confirmed = isset($_SESSION['admin']) ? 1 : 0;
+
     // Insert media into correct table
-    $sql = "INSERT INTO {$media_type} (name, creator, genre, description, date_added) 
-    VALUES(?, ?, ?, ?, ?)";
-    $params = array($name, $creator, $genre, $description, $date_added);
+    $sql = "INSERT INTO {$media_type} (name, creator, genre, description, date_added, confirmed) 
+    VALUES(?, ?, ?, ?, ?, ?)";
+    $params = array($name, $creator, $genre, $description, $date_added, $confirmed);
     
     $result = $q->query($sql, $params);
 
@@ -38,6 +42,20 @@
         $data = $q->getData($result);
 
         $media_id = $data['id'];
+
+
+        // If a non-admin user is adding a new media entry
+        if(!isset($_SESSION['admin'])) {
+            // Insert into request table
+            $sql = "INSERT INTO media_requests (cat_id, prod_id) VALUES (?, ?)";
+            $params = array($category, $media_id);
+
+            $result = $q->query($sql, $params);
+        }
+
+
+
+        // Adding a picture to the movie
 
         $picture_name = "";
         $extension = "";
@@ -103,7 +121,7 @@
         $result = $q->query($sql, $params);
 
         if($result){
-            echo '<script>alert("You have successfully added a new ' . substr($media_type, 0, -1) . '!");</script>';
+            echo '<script>alert("New ' . substr($media_type, 0, -1) . ' entry request sent to admins!");</script>';
             echo '<script>window.open("/quorating/index.php", "_self");</script>';
         }
     }

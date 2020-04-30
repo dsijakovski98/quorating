@@ -75,6 +75,13 @@ OPTIONAL:
 >>> 29/04/2019 - 30/04/2019
 * Add thumbnails to media files [x]
 * Add comments editing mechanism [] ?
-* Add comments removal mechanism [] ?
-* Setup genre buttons to filter media []
-* Send media add notifications to admins []
+* Add comments removal mechanism [x] ?
+* Setup genre buttons to filter media [x]
+* Send media add notifications to admins:
+	- Create notifications table [x]
+	- Insert request into notifications table [x] (DON'T INSERT INTO MEDIAS TABLE)
+	- Set session variable 'admin' on sign in if its the admin [x]
+	- Update navbar code to show notifications on admins [x]
+	- Show only confirmed media files [x]
+	- Create a pop up window to confirm/deny request
+	- Insert/Delete media with admin permission []
