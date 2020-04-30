@@ -102,7 +102,8 @@
                   <?php endif; ?>
               <?php endif; ?>
               
-              <?php $i = 0;
+              <?php if(isset($_SESSION['admin'])):
+              $i = 0;
               foreach($requests as $request):
 
                 $media_type = getMediaType($request['cat_id']);
@@ -133,7 +134,9 @@
 
 
 
-              <?php endforeach; ?>
+              <?php endforeach; 
+              endif;
+                ?>
 
             <img class="rounded-circle" style="margin-top:5px;" src="<?php echo $website; ?>images/profilePics/<?php echo $picName;?>.<?php echo "$fileExt?" . mt_rand();?>" width="60" height="65">
             

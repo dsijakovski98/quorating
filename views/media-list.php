@@ -10,7 +10,9 @@
 		require '../utils/include.php';
 		require_once '../control/media-list-control.php';
 		
-		$media_type = lcfirst(substr($media, 0, -1));
+		$media_name = lcfirst(substr($media, 0, -1));
+		$media_name .= 's';
+		// echo $media_type;
 
 
 ?>
@@ -42,7 +44,7 @@
 		<?php if(isset($_SESSION['user_name'], $_SESSION['v']) && $_SESSION['v'] == 1): ?>
 		<div class="row" style="margin:0px;">
 			<div class="col-md-2 text-center" style="margin:0px; margin-left:8px;">
-				<button type="submit" class="btn btn-primary btn-lg bg-dark" name="add" style="margin:-5px;"><a href="addNew.php?c=<?php echo $categorie; ?>">Add new <?php echo $media_type; ?></button>
+				<button type="submit" class="btn btn-primary btn-lg bg-dark" name="add" style="margin:-5px;"><a href="addNew.php?c=<?php echo $categorie; ?>">Add new <?php echo $media_name; ?></button>
 			</div>
 		</div>
 		<?php endif; ?>
@@ -83,12 +85,12 @@
 					}
 				}
 				$picture_name = getPictureName($categorie, $row['id']);
-				$picturePath = $website . "images/media/$media_type"."s/$picture_name";
+				$picturePath = $website . "images/media/$media_name/$picture_name";
 				// echo $picturePath;
 				// echo $picture_name;
 			?>
 			<div class="card" style="margin:1%; width:20rem; display:inline-block; vertical-align:top;">
-				<img class="rounded" src="<?php echo $picturePath . "?" . mt_rand(); ?>" width="100%" height="390px">
+				<img class="rounded" src="<?php echo $picturePath; ?>" width="100%" height="390px">
 				<div class="card-body">
 					<h3 class="card-title text-dark" style="height:30px; font-size:4vh;"><?php echo $row['name']; ?></h3>
 					<br>
