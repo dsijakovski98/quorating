@@ -44,7 +44,7 @@
         echo "<script>window.open('/quorating/index.php','_self');</script>";
     }
 
-    if(isset($_POST['submit-changes'])) {   
+    if(isset($_POST['edit-comment'])) {   
         $user_id = $_POST['user_id'];
         $categorie_id = $_POST['categorie_id'];
         $product_id = $_POST['prod_id'];

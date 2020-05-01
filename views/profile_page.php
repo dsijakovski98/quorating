@@ -70,7 +70,8 @@
                         ?>
                     </div>
 
-                    <div class="text-center">
+                    <div class="text-left">
+                        <section><h3>General Info<h3>
                         <div>
                             <h4><?php echo 'Your username: ' . $user_name . '<br>'; ?></h4>
                         </div>
@@ -89,6 +90,7 @@
                             <h6><?php echo 'Number of comments: <br>'?><h6>
                         </div>
                     </div>
+                    </section>
 
                     <br><br>
             

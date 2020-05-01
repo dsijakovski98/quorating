@@ -170,40 +170,29 @@ require_once("../control/media-view-control.php");
                                     <input type="hidden" name="prod_id" value="<?php echo $comment['prod_id'];?>">
                                     <input type="hidden" name="comment" value="<?php echo $comment['comment'];?>">
                                     <input type="hidden" name="date" value="<?php echo $comment['date_added']; ?>">
-                                    <button type = "submit" data-toggle = "modal" data-target = "#myModal">Edit</button>
-                                    <div class = "modal fade" id = "myModal" tabindex = "-1" role = "dialog" 
-                                    aria-labelledby = "myModalLabel" aria-hidden = "true">
-                                    <div class = "modal-dialog">
-                                        <div class = "modal-content">
-                                            
-                                            <div class = "modal-header">
-                                                <button type = "button" class = "close" data-dismiss = "modal" aria-hidden = "true">&times;
-                                                </button>
-                                                
-                                                <h4 class = "modal-title" id = "myModalLabel">
-                                                Edit comment
-                                                </h4>
-                                            </div>
-                                            
-                                            <div class = "modal-body">
-                                            <textarea rows="4" cols="50"<?php var_dump($comments);?></textarea>
-                                            </div>
-                                            
-                                            <div class = "modal-footer">
-                                                <button type = "button" class = "btn btn-default" data-dismiss = "modal">
-                                                Close
-                                                </button>
-                                                
-                                                <button type = "button" class = "btn btn-primary" name="submit-changes">
-                                                Submit changes
-                                                </button>
-                                            </div>
-                                            
-                                        </div><!-- /.modal-content -->
-                                    </div><!-- /.modal-dialog -->
-                                    
-                                    </div><!-- /.modal -->
-                                                                        
+                                    <button type="button" data-toggle="modal" data-target="#exampleModal">Edit</button>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Edit Comment</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                        <textarea><?php echo $comment['comment'];?></textarea>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary" name="edit-comment">Save changes</button>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                                                                                            
                                 </form>
                                 <?php endif; ?>
                             </div>
