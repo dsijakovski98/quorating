@@ -45,3 +45,33 @@ function getMediaType($cat_id) {
 
   return $media_type;
 }
+
+function getCreator($cat_id) {
+  $creator = "";
+  switch($cat_id) {
+    case '1':
+      $creator = "Director";
+      break;
+    case '2':
+      $creator = "Author";
+      break;
+    case '3':
+      $creator = "Developer";
+      break;
+  }
+
+  return $creator;
+}
+
+function getRequestPicture($prod_id, $cat_id) {
+  $q = new Queries();
+
+  $sql = "SELECT pic_name, ext FROM media_images WHERE prod_id = ? AND category = ? LIMIT 1";
+  $params = array($prod_id, $cat_id);
+
+  $result = $q->query($sql, $params);
+
+  $data = $q->getData($result);
+
+  return $data['pic_name'] . '.' . $data['ext'];
+}
