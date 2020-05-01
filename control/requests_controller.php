@@ -20,6 +20,8 @@ if(isset($_POST['post_val'])) {
     else if($action == "deny") {
         $sql = "DELETE FROM {$table_name} WHERE id = ?";
         $message = "Request denied.";
+
+        // TOMMOROR ADD: DELETE THE UPLOADED PHOTO!!!!!!!!!
     }
     else {
         echo $action;
