@@ -1,5 +1,5 @@
-  <!-- NAVBAR -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+ <!-- NAVBAR -->
+ <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
   <img src="<?php echo $website; ?>images/Qlogo.png" width="80">
   <a class="navbar-brand" style="margin-left:10px; user-select:none; color:white;">QuoRating</a>
@@ -69,6 +69,8 @@
                 <a href="#" class="dropdown-item">
                       No new requests at this time!
                   </a>
+                  </div>
+            </li>
               <?php else:
                   $i = 0; 
                   foreach($requests as $request):
@@ -97,7 +99,8 @@
 
                   <div class="dropdown-divider"></div>
                 <?php endforeach; ?>
-
+                </div>
+            </li>
                   <?php endif; ?>
               <?php endif; ?>
               
@@ -164,8 +167,7 @@
               endif;
               ?>
               <script src="<?php echo $website; ?>js/requests.js?<?php echo mt_rand(); ?>"></script>
-              </div>
-            </li>
+
             <img class="rounded-circle" style="margin-top:5px;" src="<?php echo $website; ?>images/profilePics/<?php echo $picName;?>.<?php echo "$fileExt?" . mt_rand();?>" width="60" height="65">
             
             <li class="nav-item">
@@ -188,5 +190,3 @@
     </div>
   </div>
 </nav>
-
-
