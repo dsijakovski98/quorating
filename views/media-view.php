@@ -183,11 +183,11 @@ require_once("../control/media-view-control.php");
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                        <textarea><?php echo $comment['comment'];?></textarea>
+                                        <textarea><?php echo $comment['comment'] ;?></textarea>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary" name="edit-comment">Save changes</button>
+                                            <button type="submit" class="btn btn-primary" name="edit-comment">Save changes</button>
                                         </div>
                                         </div>
                                     </div>

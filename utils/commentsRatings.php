@@ -64,11 +64,11 @@ function deleteComments($user_id, $date_added)
             return $result;
 }
 
-function editComments($user_id, $comment, $date_added)
+function editComments($user_id, $categorie_id, $prod_id, $comment, $date_added)
 {
             $q = new Queries();
-            $sql = "UPDATE user_comm SET user_id = ? AND comment = ? AND date_added = ?";
-            $params = array($user_id, $comment ,$date_added);
+            $sql = "UPDATE user_comm SET user_id = ? AND categorie_id=? AND prod_id=? AND comment = ? AND date_added = ?";
+            $params = array($user_id,$categorie_id,$prod_id, $comment ,$date_added);
             $result = $q->query($sql, $params);
 
             return $result;

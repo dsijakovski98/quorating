@@ -59,7 +59,7 @@
         
         // exit();
 
-        $result = editComments($user_id, $comment, $actual_date);
+        $result = editComments($user_id,$categorie_id,$product_id, $comment, $actual_date);
     
         if($result){
             echo "<script>alert('You have edited the comment!');</script>";
