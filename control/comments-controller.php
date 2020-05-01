@@ -44,22 +44,23 @@
         echo "<script>window.open('/quorating/index.php','_self');</script>";
     }
 
-    if(isset($_POST['edit-comment'])) {   
+    if(isset($_POST['edit-comment'])) {  
+         
         $user_id = $_POST['user_id'];
         $categorie_id = $_POST['categorie_id'];
         $product_id = $_POST['prod_id'];
-        $comment = $_POST['comment'];
+        $comment = $_POST['new_comment'];
         $date_added = $_POST['date'];
 
-        // echo "User id: " . $user_id . "<br>";
+
+        $format = "Y-m-d H:i:s";
+
         $date = date_create($date_added);
-        // echo "timestamp: " . date_format($date,"Y-m-d H:i:s") . "<br>";
+        $original_date = date_format($date, $format);
 
-        $actual_date = date_format($date, "Y-m-d H:i:s");
-        
-        // exit();
+        $new_date = date($format);
 
-        $result = editComments($user_id,$categorie_id,$product_id, $comment, $actual_date);
+        $result = editComments($user_id, $categorie_id, $product_id, $comment, $original_date, $new_date);
     
         if($result){
             echo "<script>alert('You have edited the comment!');</script>";
@@ -67,7 +68,7 @@
         else {
             echo "There has been an error while editing the comment";
         }
-        echo "<script>window.open('/quorating/index.php','_self');</script>";
+        echo "<script>window.open('/quorating/views/media-list.php?c=" . $categorie_id . "','_self')</script>";
     }
 
 

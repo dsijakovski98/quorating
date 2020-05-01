@@ -47,5 +47,4 @@ if(isset($_POST['post_val'])) {
         
         $result = $q->query($sql, $params);
     }
-    header("Location: /quorating/index.php");
 }

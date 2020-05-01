@@ -34,5 +34,4 @@ function submitForm(e) {
     form.submit();
 
     $(modalID).modal('hide');
-
 }

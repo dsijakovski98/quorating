@@ -72,9 +72,9 @@ OPTIONAL:
 * Commenting system [x]
 
 
->>> 29/04/2019 - 30/04/2019
+>>> 29/04/2019 - 01/05/2019
 * Add thumbnails to media files [x]
-* Add comments editing mechanism [] ?
+* Add comments editing mechanism [x] ?
 * Add comments removal mechanism [x] ?
 * Setup genre buttons to filter media [x]
 * Send media add notifications to admins:
@@ -84,4 +84,12 @@ OPTIONAL:
 	- Update navbar code to show notifications on admins [x]
 	- Show only confirmed media files [x]
 	- Create a pop up window to confirm/deny request [x]
-	- Insert/Delete media with admin permission []
+	- Insert/Delete media with admin permission [x]
+
+
+>>> 02/05/2019 - ?
+* Verified 2 implementation []
+* Cookie features for profile page:
+	- Favorite categorie []
+* List of user posts on profile page []
+* Notifications for comments []
