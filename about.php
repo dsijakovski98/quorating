@@ -29,17 +29,17 @@
 								<figure><img  style="border-radius:50%;" src="<?php echo $website; ?>images/Qlogo.png" alt="figure image"  height="300" width="300"></figure>
 							</div>
 							<div class="col-md-8">
-								<p class="leading">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam.</p>
-								<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit consectetur adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam.</p>
+								<p class="leading">In this unsettling time, we turn to our love of movies, books and games to give us a much needed break. Whether it's new or an old favorite, we hope to make your day a little brighter.</p>
+								<p>Sign in or sign up on our page and get in- home access to the best rating page!</p>
 							</div>
 						</div>
 
 						<div class="row">
 							<div class="col-md-9">
 								<h2 class="section-title">Vision &amp; Misssion</h2>
-								<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. </p>
-
-								<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit consectetur adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam dignissimos ducimus qui blanditiis praesentium voluptatum atque.</p>
+								<p>We had a vision to create an application that would allow users to rate their favourite movies/books/games and give their opinion about it by creating a profile on our web page.</p>
+								<p>Inspired by our professors and their idea for this site, we hope that we have helped many users to decide how to spend their free time by watching the movie, reading a book, or playing a game that are good rated by others.
+								While doing this apllication, we learned a lot and we hope that our work will pay off. We hope you enjoyed the application.</p>
 							</div>
 						</div> <!-- .row -->
 						
