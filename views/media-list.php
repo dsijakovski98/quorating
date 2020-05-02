@@ -41,16 +41,18 @@
 
 		<br>
 		<!-- GENRES -->
-		<?php if(isset($_SESSION['user_name'], $_SESSION['v']) && $_SESSION['v'] == 1): ?>
+		<?php if(isset($_SESSION['user_name'], $_SESSION['verified']) && $_SESSION['verified'] > 0): ?>
 		<div class="row" style="margin:0px;">
 			<div class="col-md-2 text-center" style="margin:0px; margin-left:8px;">
-				<button type="submit" class="btn btn-primary btn-lg bg-dark" name="add" style="margin:-5px;"><a href="addNew.php?c=<?php echo $categorie; ?>">Add new <?php echo $media_name; ?></button>
+				<button type="submit" class="btn btn-primary btn-lg bg-dark" name="add" style="margin:-5px;"><a href="addNew.php?c=<?php echo $categorie; ?>">Add new <?php echo $media_name; ?></a></button>
 			</div>
 		</div>
 		<?php endif; ?>
 		<div class="col-md-2 bg-dark rounded text-center float-left" style="margin-top:20px; margin-left:10px; height:100%;">
 		
-		<h4 class="text-center text-info font-weight-bold" style="margin-top:8px; margin-bottom:15px; text-decoration:underline;">Search by genres</h4>
+		<h2 class="text-center text-info font-weight-bold" style="margin-top:8px; margin-bottom:15px; text-decoration:underline; user-select:none;">Genres</h2>
+
+		<a class="btn text-light font-weight-bold" style="font-size:1.6em; margin:5px;" href="<?php echo $website;?>views/media-list.php?c=<?php echo $categorie;?>">All <?php echo $media;?></a>
 			<?php
 				foreach($genres as $genre):
 					$href = $website . "views/media-list.php?c=" . $categorie . "&g=" . $genre;

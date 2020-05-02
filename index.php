@@ -5,7 +5,6 @@
     
     // Run this function to include any file as if from the root folder
     require_page("control/authentication_controller.php");
-    require_page("utils/secure_conn.php");
 
     if(isset($_GET['token'])){
         $token = $_GET['token'];
@@ -38,19 +37,17 @@
             <br>
             <!-- PHP TO CHECK IF ACCOUNT IS VERIFIED -->
             <?php 
-                if(isset($_SESSION['verified'])) {
-                    if($_SESSION['verified'] == 0){
+                if(isset($_SESSION['verified'])):
+                    if($_SESSION['verified'] == 0):
                     ?>
                     <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                        <strong><a class="text-primary" href="<?php echo $website; ?>views/verify_email.php"> Please verify your account!</a></strong> Ratings and comments will be disabled otherwise. An e-mail has been sent to <strong><?php echo $_SESSION['user_email']; ?></strong>
+                        <strong>Please verify your account!</strong> Ratings and comments will be disabled otherwise. An e-mail has been sent to <strong><?php echo $_SESSION['user_email']; ?></strong>
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <?php }
-                    elseif($_SESSION['verified'] == 1) {
-                        $_SESSION['v'] = 1;
-                        unset($_SESSION['verified']);
+                    <?php
+                    elseif($_SESSION['verified'] == 1):
                     ?>
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         Your account has been verified!
@@ -59,8 +56,8 @@
                         </button>
                     </div>
                     <?php
-                        }
-                }
+                        endif;
+                    endif;
                     ?>
         </div>
     </div>

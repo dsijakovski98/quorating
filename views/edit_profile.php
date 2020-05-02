@@ -1,6 +1,6 @@
   <!DOCTYPE html>
 <?php
-  require_once '../utils/include.php';
+require_once '../utils/include.php';
   require_once '../model/get_user.php';
 
   require_page("utils/navbar.php");

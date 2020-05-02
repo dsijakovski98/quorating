@@ -88,8 +88,15 @@ OPTIONAL:
 
 
 >>> 02/05/2019 - ?
-* Verified 2 implementation []
+* Verified 2 implementation [x]
+* Fix change password redirect bug [x]
+
+* Reformat chunks into seperate files:
+	- Navbar modal [x]
+	- Media view modal [x]
+
 * Cookie features for profile page:
-	- Favorite categorie []
+	- Add three cookie variables upon sign up []
+	- Favorite categorie by cookie []
 * List of user posts on profile page []
 * Notifications for comments []

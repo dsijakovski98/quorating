@@ -1,7 +1,9 @@
 <?php
+	session_start();
+
 	require_once '../utils/include.php';
 
-	if(!isset($SESSION['user_name'])){
+	if(!isset($_SESSION['user_name'])){
 		header("Location: ../index.php");
 		exit();
 	}
@@ -15,12 +17,18 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://fonts.googleapis.com/css?family=Roboto|Courgette|Pacifico:400,700" rel="stylesheet">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
 	<link rel="stylesheet" type="text/css" href="<?php echo $website; ?>css/signin.css">
 </head>
 <body>
+	<?php
+		require_once '../utils/bootstrap.php';
+		require_once '../utils/bootstrap_scripts.php';
+		require_once '../utils/navbar.php';
+	?>
+
 	<div class="col-md-4"></div>
 	<div class="signin-form container col-md-4">
 		<form action="<?php echo $website; ?>control/password-control.php" method="post">
@@ -74,5 +82,8 @@
 			?>
 		</form>
 	</div>
+
+	<?php require_once '../utils/footer.php'; ?>
+
 </body>
 </html>

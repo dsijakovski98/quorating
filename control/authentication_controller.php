@@ -42,7 +42,12 @@ if(isset($_POST['sign_in'])) {
         $_SESSION['user_name'] = $row['user_name'];
         $_SESSION['user_email'] = $row['user_email'];
         $_SESSION['user_gender'] = $row['user_gender'];
-        $_SESSION['verified'] = $row['verified'];
+        if($row['verified'] == 1){
+          $_SESSION['verified'] = 2;
+        }
+        else {
+          $_SESSION['verified'] = $row['verified'];
+        }
         $_SESSION['user_id'] = $row['id'];
         if($row['admin'] == 1) {
           $_SESSION['admin'] = 1;
@@ -168,6 +173,9 @@ if(isset($_POST['sign_up'])) {
         $user_info = $q->getData($result);
       
         $user_id = $user_info['id'];
+
+        // TODO: Set cookie variables
+
 
         $sql = 'INSERT INTO images (id, extension, hasPicture) VALUES (?, "jpg", 0)';
         $params = array($user_id);

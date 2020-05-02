@@ -14,7 +14,7 @@
         setComments($user_id, $categorie_id, $product_id, $comment, $date_added);    
     
         echo "<script>alert('You have successfully commented!');</script>";
-        echo "<script>window.open('/quorating/index.php','_self');</script>";
+        echo "<script>window.open('/quorating/views/media-list.php?c=" . $categorie_id . "','_self')</script>";
     }
 
 
@@ -41,7 +41,7 @@
         else {
             echo "There has been an error while deleting the comment";
         }
-        echo "<script>window.open('/quorating/index.php','_self');</script>";
+        echo "<script>window.open('/quorating/views/media-list.php?c=" . $categorie_id . "','_self')</script>";
     }
 
     if(isset($_POST['edit-comment'])) {  
