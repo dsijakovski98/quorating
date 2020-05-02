@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
-    <title>Profile Page</title>
+    <title>Quorating - <?php echo $user_name; ?></title>
     
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="<?php echo $website; ?>js/bootstrap.min.js"></script>
@@ -58,7 +58,12 @@
                             
                             <?php
                                 $posts = getPosts();
-                                foreach($posts as $post):
+                                if(empty($posts)): ?>
+
+                                <p class="text-light">Sorry, you have no posts yet.</p>
+
+                                <?php else:
+                                    foreach($posts as $post):
                             ?>
                             <div class="card" style="margin:auto; width:80%;">
                                 <div class="card-body clearfix">
@@ -81,7 +86,10 @@
                             </div>
                             <br>
 
-                            <?php endforeach; ?>
+                            <?php 
+                                endforeach;
+                                endif; 
+                            ?>
 
                         </div>
 
