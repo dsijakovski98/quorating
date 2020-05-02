@@ -98,5 +98,5 @@ OPTIONAL:
 * Cookie features for profile page:
 	- Add three cookie variables upon sign up []
 	- Favorite categorie by cookie []
-* List of user posts on profile page []
+* List of user posts on profile page [x]
 * Notifications for comments []
