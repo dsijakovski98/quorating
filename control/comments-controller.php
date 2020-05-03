@@ -11,8 +11,9 @@
         $comment = $_POST['COMMENT'];
         $date_added = $_POST['date_added'];
 
-        setComments($user_id, $categorie_id, $product_id, $comment, $date_added);    
-    
+        setComments($user_id, $categorie_id, $product_id, $comment, $date_added);
+        
+        $result = sendCommentMail($user_id, $categorie_id, $product_id, $comment, $date_added);
         echo "<script>alert('You have successfully commented!');</script>";
         echo "<script>window.open('/quorating/views/media-list.php?c=" . $categorie_id . "','_self')</script>";
     }

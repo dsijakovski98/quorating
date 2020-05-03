@@ -55,7 +55,9 @@
     }
     
 
-
+    function test() {
+        echo "TEST TEST TEST";
+    }
 
 
 
