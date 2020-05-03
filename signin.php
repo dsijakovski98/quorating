@@ -38,8 +38,8 @@
 			<p style="color:#fff;">Login to QuoRate</p>
 		</div>
 		<div class="form-group">
-			<label>Email</label>
-        	<input type="text" class="form-control" placeholder="Username/E-mail" name="email" autocomplete="off" required="required">
+			<label>Username</label>
+        	<input type="text" class="form-control" placeholder="Username" name="email" autocomplete="off" required="required">
         </div>
         <div class="form-group">
 			<label>Password</label>
