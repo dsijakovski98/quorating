@@ -24,6 +24,21 @@ $media = $media_name['cat_name'];
 $table_name = lcfirst($media);
 
 
+// Update cookie
+if(isset($_SESSION['user_name'])) {
+    $cookie_name = $table_name . "_clicks";
+    $cookie_value = $_COOKIE[$cookie_name] + 1;
+
+    $expiring_time = time() + (60*60*24) * 7; // 1 week
+    $options = array(
+        'httponly' => true,
+        'expires' => $expiring_time,
+        'path' => "/"
+    ); 
+
+    setcookie($cookie_name, $cookie_value, $options);
+}
+
 
 
 

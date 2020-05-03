@@ -30,7 +30,7 @@
 							</div>
 							<div class="col-md-8">
 								<p class="leading">In this unsettling time, we turn to our love of movies, books and games to give us a much needed break. Whether it's new or an old favorite, we hope to make your day a little brighter.</p>
-								<p>Sign in or sign up on our page and get in- home access to the best rating page!</p>
+								<p>Sign in or sign up on our page and get in-home access to the best rating page!</p>
 							</div>
 						</div>
 

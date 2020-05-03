@@ -39,6 +39,23 @@ if(isset($_POST['sign_in'])) {
     if($user_check == 1 && $password_check == 1) {
 
         // SUCCESSFULL SIGN IN
+        $expiring_time = time() + (60*60*24) * 7; // 1 week
+        $options = array(
+            'httponly' => true,
+            'expires' => $expiring_time,
+            'path' => "/"
+        );        
+        if(!isset($_COOKIE['movies_clicks'])) {
+          setcookie("movies_clicks", 0, $options);
+        }
+        if(!isset($_COOKIE['books_clicks'])) {
+          setcookie("books_clicks", 0, $options);
+        }
+        if(!isset($_COOKIE['games_clicks'])) {
+          setcookie("games_clicks", 0, $options);
+        }
+
+
         $_SESSION['user_name'] = $row['user_name'];
         $_SESSION['user_email'] = $row['user_email'];
         $_SESSION['user_gender'] = $row['user_gender'];
@@ -175,7 +192,15 @@ if(isset($_POST['sign_up'])) {
         $user_id = $user_info['id'];
 
         // TODO: Set cookie variables
-
+        $expiring_time = time() + (60*60*24) * 7; // 1 week
+        $options = array(
+            'httponly' => true,
+            'expires' => $expiring_time,
+            'path' => "/"
+        );
+        setcookie("movies_clicks", 0, $options);
+        setcookie("books_clicks", 0, $options);
+        setcookie("games_clicks", 0, $options);
 
         $sql = 'INSERT INTO images (id, extension, hasPicture) VALUES (?, "jpg", 0)';
         $params = array($user_id);
@@ -192,7 +217,6 @@ if(isset($_POST['sign_up'])) {
       }
     }
 }
-
 
 // Verifying user function
 function verifyUser($token) {

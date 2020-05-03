@@ -96,7 +96,9 @@ OPTIONAL:
 	- Media view modal [x]
 
 * Cookie features for profile page:
-	- Add three cookie variables upon sign up []
-	- Favorite categorie by cookie []
+	- Add three cookie variables upon sign up [x]
+	- Favorite categorie by cookie [x]
 * List of user posts on profile page [x]
 * Notifications for comments []
+
+* Add posted_by value media insertion [x]

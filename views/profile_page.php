@@ -64,13 +64,18 @@
 
                                 <?php else:
                                     foreach($posts as $post):
+
+                                        $date = date_create($post['date_added']);
+
+                                        $date = date_format($date, DATE_COOKIE);
+                                        $date = substr($date, 0, -5);
                             ?>
                             <div class="card" style="margin:auto; width:80%;">
                                 <div class="card-body clearfix">
-                                    <img src="<?php echo $post['img_destination']; ?>" class="float-right rounded-circle" width="60" height="60" >
+                                    <img src="<?php echo $post['img_destination']; ?>" class="float-right rounded-circle" width="70" height="70" >
                                     <h4 class="card-title text-left"><?php echo $post['name'];?><small> (<?php echo $post['type'];?>)</small></h4>
-                                    <p class="card-subtitle text-left text-muted">
-                                        <?php echo $post['date_added'];?>
+                                    <p class="card-subtitle text-left text-muted font-weight-bold" style="user-select:none;">
+                                        <small><?php echo $date;?></small>
                                     </p>
                                     <hr>
                                     <p class="card-text text-dark text-left">
@@ -92,19 +97,28 @@
                             ?>
 
                         </div>
-
+                        <?php 
+                            $fave = getFaveCategory();
+                        ?>
                         <div class="fave-category col-md-4 text-center" style="margin-left:35px;">
                             <h4 class="text-light" style="margin-top:9px;">Favorite category</h4>
                             <hr style="background-color:gray;">
-
+                            <?php 
+                                $i = 0;
+                                foreach($fave as $f):
+                                $i++; 
+                            ?>
                             <div class="card" style="margin-left:-10px; width:15rem;">
-                                <img class="card-img-top" src="/quorating/images/popcorn.jpg" alt="Card image cap">
+                                <img class="card-img-top" src="/quorating/images/<?php echo $f['pic_name'];?>" alt="Card image cap">
                                 <div class="card-body">
-                                    <h3 class="card-title">#1 Movies</h3>
+                                    <h3 class="card-title"><?php echo "#$i " . $f['name'];?></h3>
                                     <br>
-                                    <a href="<?php echo $website; ?>views/media-list.php?c=1" class="btn btn-primary">Browse</a>
+                                    <a href="<?php echo $website; ?>views/media-list.php?c=<?php echo $f['cat_id'];?>" class="btn btn-primary">Browse</a>
                                 </div>
                             </div>
+                            <br>
+
+                            <?php endforeach; ?>
 
 
                         </div>

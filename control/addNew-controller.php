@@ -18,6 +18,8 @@
     $genre = $_POST['genre'];
     $description = $_POST['description'];
     $date_added = $_POST['date_added'];
+    $posted_by = (int)$_SESSION['user_id'];
+
     $thumbnail = $_FILES['picture'];
 
     $q = new Queries();
@@ -25,20 +27,22 @@
     $confirmed = isset($_SESSION['admin']) ? 1 : 0;
 
     // Insert media into correct table
-    $sql = "INSERT INTO {$media_type} (name, creator, genre, description, date_added, confirmed) 
-    VALUES(?, ?, ?, ?, ?, ?)";
-    $params = array($name, $creator, $genre, $description, $date_added, $confirmed);
+    $sql = "INSERT INTO {$media_type} (posted_by, name, creator, genre, description, date_added, confirmed) 
+    VALUES(?, ?, ?, ?, ?, ?, ?)";
+    $params = array($posted_by, $name, $creator, $genre, $description, $date_added, $confirmed);
     
     $result = $q->query($sql, $params);
-
+    // $d = $q->getData($result);
+    // var_dump($d);
 
     if($result){
 
         // Get id of movie
-        $sql = "SELECT id FROM {$media_type} WHERE name = ? and date_added = ? LIMIT 1";
+        $sql = "SELECT * FROM {$media_type} WHERE name = ? and date_added = ? LIMIT 1";
         $params = array($name, $date_added);
 
         $result = $q->query($sql, $params);
+
         $data = $q->getData($result);
 
         $media_id = $data['id'];
@@ -121,7 +125,14 @@
         $result = $q->query($sql, $params);
 
         if($result){
-            echo '<script>alert("New ' . substr($media_type, 0, -1) . ' entry request sent to admins!");</script>';
+
+            if(isset($_SESSION['admin'])) {
+                echo '<script>alert("New ' . substr($media_type, 0, -1) . ' entry added!");</script>';
+            }
+            else {
+                echo '<script>alert("New ' . substr($media_type, 0, -1) . ' entry request sent to admins!");</script>';
+            }
+
             echo '<script>window.open("/quorating/index.php", "_self");</script>';
         }
     }
