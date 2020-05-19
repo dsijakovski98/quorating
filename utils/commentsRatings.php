@@ -75,6 +75,8 @@ function editComments($user_id, $categorie_id, $prod_id, $newComment, $original_
     return $result;
 }
 
+
+
 function sendCommentMail($user_id, $categorie_id, $product_id, $comment, $date_added) {
     $q = new Queries();
 
@@ -114,7 +116,7 @@ function sendCommentMail($user_id, $categorie_id, $product_id, $comment, $date_a
         return;
     }
 
-
+    
     $sql = "SELECT * FROM users WHERE id = ? LIMIT 1";
     $params = array($posted_by);
     $result = $q->query($sql, $params);
@@ -173,7 +175,7 @@ function sendCommentMail($user_id, $categorie_id, $product_id, $comment, $date_a
         </div>
     </body>
     </html>';
-    
+
     return send_mail($to, $subject, $body);
 }
 

@@ -104,6 +104,7 @@
 					<input type="hidden" name="categorie" value="<?php echo $categorie; ?>">
 					<input type="hidden" name="media_id" value="<?php echo $row['id'];?>">
 					<input type="hidden" name="table_name" value="<?php echo $table_name;?>">
+					<input type="hidden" name="submit-media" value="submit">
 					</form>
 				</div>
 

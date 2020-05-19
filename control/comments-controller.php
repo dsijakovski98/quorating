@@ -3,6 +3,12 @@
     require_once '../utils/include.php';
     require_page("utils/commentsRatings.php");
 
+    $tables = array(
+        1 => "movies",
+        2 => "books",
+        3 => "games"
+    );
+
     if(isset($_POST['submit-comment'])) { 
 
         $user_id = $_POST['user_id'];
@@ -14,8 +20,23 @@
         setComments($user_id, $categorie_id, $product_id, $comment, $date_added);
         
         $result = sendCommentMail($user_id, $categorie_id, $product_id, $comment, $date_added);
+        
         echo "<script>alert('You have successfully commented!');</script>";
-        echo "<script>window.open('/quorating/views/media-list.php?c=" . $categorie_id . "','_self')</script>";
+        // Add mechanism to stay on page
+        ?>
+        <form action="/quorating/views/media-view.php" method="POST" id="media-view-form">
+            <input type="hidden" name="categorie" value="<?php echo $categorie_id; ?>">
+			<input type="hidden" name="media_id" value="<?php echo $product_id;?>">
+			<input type="hidden" name="table_name" value="<?php echo $tables[$categorie_id];?>">
+            <input type="hidden" name="submit-media" value="submit">
+        </form>
+        
+        <script>
+            var form = document.getElementById("media-view-form");
+            console.log(form);
+            form.submit();
+        </script>
+        <?php
     }
 
 
@@ -42,7 +63,21 @@
         else {
             echo "There has been an error while deleting the comment";
         }
-        echo "<script>window.open('/quorating/views/media-list.php?c=" . $categorie_id . "','_self')</script>";
+        // Add mechanism to stay on page
+        ?>
+        <form action="/quorating/views/media-view.php" method="POST" id="media-view-form">
+            <input type="hidden" name="categorie" value="<?php echo $categorie_id; ?>">
+			<input type="hidden" name="media_id" value="<?php echo $product_id;?>">
+			<input type="hidden" name="table_name" value="<?php echo $tables[$categorie_id];?>">
+            <input type="hidden" name="submit-media" value="submit">
+        </form>
+        
+        <script>
+            var form = document.getElementById("media-view-form");
+            console.log(form);
+            form.submit();
+        </script>
+        <?php
     }
 
     if(isset($_POST['edit-comment'])) {  
@@ -68,8 +103,22 @@
         }
         else {
             echo "There has been an error while editing the comment";
-        }
-        echo "<script>window.open('/quorating/views/media-list.php?c=" . $categorie_id . "','_self')</script>";
+        }// Add mechanism to stay on page
+        ?>
+        <form action="/quorating/views/media-view.php" method="POST" id="media-view-form">
+            <input type="hidden" name="categorie" value="<?php echo $categorie_id; ?>">
+			<input type="hidden" name="media_id" value="<?php echo $product_id;?>">
+			<input type="hidden" name="table_name" value="<?php echo $tables[$categorie_id];?>">
+            <input type="hidden" name="submit-media" value="submit">
+        </form>
+        
+        <script>
+            var form = document.getElementById("media-view-form");
+            console.log(form);
+            form.submit();
+        </script>
+
+        <?php
     }
 
 

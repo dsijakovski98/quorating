@@ -53,11 +53,7 @@
         $subject = "Verify your e-mail address";
         send_mail($userEmail, $subject, $body);
     }
-    
 
-    function test() {
-        echo "TEST TEST TEST";
-    }
 
 
 

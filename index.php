@@ -84,8 +84,18 @@
         </div>
     </div>
 </div>
+<br>
 
-
+<div class="card text-center" style="margin:auto; width:30%; background:gray;">
+    <div class="card-body clearfix">
+        <h5 class="card-title text-left text-center text-light">COVID-19 News</h5>
+        <hr>
+        <p class="card-text text-left text-light text-center" style="font-size:14px;">
+            Get the latest information about the novel COVID-19 virus.
+        </p>
+        <button class="btn btn-dark"><a class="text-light" style="text-decoration:none;" href="https://koronavirus.gov.mk/">Get info</a></button>
+    </div>
+</div>
 
 <?php
     require_page("/utils/footer.php");

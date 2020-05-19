@@ -3,6 +3,12 @@
 require_once '../utils/include.php';
 require_page("utils/commentsRatings.php");
 
+$tables = array(
+    1 => "movies",
+    2 => "books",
+    3 => "games"
+);
+
 if($_POST['rating'] == 0) {
     header("Location: /quorating/index.php");
     exit();
@@ -43,5 +49,17 @@ else {
 }
 
 // js redirect
-echo "<script>window.open('". $website ."/views/media-list.php?c=" . $categorie_id . "','_self')</script>";
+?>
+        <form action="/quorating/views/media-view.php" method="POST" id="media-view-form">
+            <input type="hidden" name="categorie" value="<?php echo $categorie_id; ?>">
+			<input type="hidden" name="media_id" value="<?php echo $prod_id;?>">
+			<input type="hidden" name="table_name" value="<?php echo $tables[$categorie_id];?>">
+            <input type="hidden" name="submit-media" value="submit">
+        </form>
+        
+        <script>
+            var form = document.getElementById("media-view-form");
+            // console.log(form);
+            form.submit();
+        </script>
 
